@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="event_invoice_qweb_report_template">
+            <t t-call="web.html_container">
+                <t t-set="total_amount" t-value="0"/>
+                <t t-set="price_tax" t-value="0"/>
+                <t t-set="price_total" t-value="0"/>
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <t t-set="address">
+                            <div t-field="o.partner_id"
+                                 t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                            <p t-if="o.partner_id.vat">
+                                <t t-if="o.company_id.account_fiscal_country_id.vat_label"
+                                   t-out="o.company_id.account_fiscal_country_id.vat_label"/>
+                                <t t-else="">Tax ID</t>:
+                                <span t-field="o.partner_id.vat"/>
+                            </p>
+                        </t>
+                        <div class="page">
+                            <div style="white-space: nowrap;">
+                                <h2 class="mt-4">
+                                    <span t-if="o.state in ['draft','sent']">Quotation #</span>
+                                    <span t-else="">Order #</span>
+                                    <span t-field="o.order_id">SO0000</span>
+                                </h2>
+                                <div class="row mt-4 mb-2" id="informations">
+                                    <div t-if="o.date_order" class="col-auto col-3 mw-100 mb-2"
+                                         name="informations_date">
+                                        <strong t-if="o.state in ['draft', 'sent']">Quotation Date:</strong>
+                                        <strong t-else="">Order Date:</strong>
+                                        <br/>
+                                        <span class="m-0" t-field="o.date_order" t-options='{"widget": "date"}'>
+                                            2023-12-31
+                                        </span>
+                                    </div>
+                                    <div t-if="o.validity_date and o.state in ['draft', 'sent']"
+                                         class="col-auto col-3 mw-100 mb-2"
+                                         name="expiration_date">
+                                        <strong>Expiration:</strong>
+                                        <br/>
+                                        <span class="m-0" t-field="o.validity_date">2023-12-31</span>
+                                    </div>
+                                    <div t-if="o.user_id.name" class="col-auto col-3 mw-100 mb-2">
+                                        <strong>Salesperson:</strong>
+                                        <br/>
+                                        <span class="m-0" t-field="o.user_id">Mitchell Admin</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <hr style="color:black;"/>
+                                    <table class="table table-sm o_main_table table-borderless mt-4">
+                                        <thead style="display: table-row-group">
+                                            <tr>
+                                                <th class="text-start">Description</th>
+                                                <th class="text-end">Quantity</th>
+                                                <th class="text-end">Unit Price</th>
+                                                <th class="text-end">Taxes</th>
+                                                <th class="text-end">Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <t t-foreach="o.order_lines" t-as="c">
+                                            <t t-set="total_amount" t-value="(total_amount + c.price_subtotal)"/>
+                                            <t t-set="price_tax" t-value=" (price_tax + (c.price_subtotal * 0.15))"/>
+                                            <t t-set="price_total" t-value=" (price_tax + total_amount)"/>
+                                            <tbody class="sale_tbody">
+                                                <tr>
+                                                    <td>
+                                                        <span t-field="c.name"/>
+                                                    </td>
+                                                    <td class="text-end">
+                                                        <span t-field="c.product_uom_qty"/>
+                                                    </td>
+                                                    <td class="text-end">
+                                                        <span t-field="c.price_unit"/>
+                                                    </td>
+                                                    <td class="text-end">
+                                                        <span t-field="c.tax_id"/>
+                                                    </td>
+                                                    <td class="text-end">
+                                                        <span t-field="c.price_subtotal"/>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </t>
+                                    </table>
+                                    <div id="right-elements"
+                                         t-attf-class="#{'col-5' if report_type != 'html' else 'col-12 col-md-5'} ms-5 d-inline-block float-end">
+                                        <div id="total" class="clearfix row">
+                                            <div class="ms-auto">
+                                                <table class="table table-sm table-borderless"
+                                                       style="page-break-inside: avoid; position:relative;">
+                                                    <tbody>
+                                                        <tr class="border-black o_subtotal" style="">
+                                                            <td>
+                                                                <strong>Untaxed Amount</strong>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <span>$
+                                                                    <span t-esc="total_amount"
+                                                                          class="oe_currency_value">19,250.00
+                                                                    </span>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="">
+                                                            <td>
+                                                                <span class="text-nowrap">Tax 15%</span>
+                                                            </td>
+                                                            <td class="text-end o_price_total">
+                                                                <span class="text-nowrap">$
+                                                                    <span t-esc="price_tax" class="text-nowrap">$
+                                                                        2,887.50
+                                                                    </span>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="border-black o_total">
+                                                            <td>
+                                                                <strong>Total</strong>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <span class="text-nowrap">$
+                                                                    <span t-esc="price_total"
+                                                                          class="oe_currency_value">
+                                                                        22,137.50
+                                                                    </span>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+
+
+    <report
+            id="event_invoice_report_id"
+            model="sale.order.report.wizard"
+            report_type="qweb-pdf"
+            string="Print Invoice Data"
+            name="event_managment_system.event_invoice_qweb_report_template"
+            file="event_managment_system.event_invoice_qweb_report_template"
+    />
+
+    <record id="action_report_event_invoice" model="ir.actions.report">
+        <field name="name">Event Invoice</field>
+        <field name="type">ir.actions.report</field>
+        <field name="model">sale.order.report.wizard</field>
+        <field name="report_name">event_managment_system.event_invoice_qweb_report_template</field>
+        <field name="report_file">event_managment_system.event_invoice_qweb_report_template</field>
+        <field name="report_type">qweb-pdf</field>
+        <!--        <field name="binding_model_id" ref="model_event_invoi"/>-->
+        <field name="binding_type">report</field>
+        <field name="print_report_name">'Sale-Invoice -%s' % object.order_id.name</field>
+    </record>
+</odoo>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <menuitem id="menu_event_management_root"
+              name="Event Management"
+              web_icon="event_managment_system,static/description/icon.png"
+              sequence="1"/>
+
+    <menuitem id="menu_event_event_master"
+              name="Events"
+              parent="menu_event_management_root"
+              sequence="1"/>
+
+    <menuitem id="menu_event_attendee_master"
+              name="Attendee"
+              parent="menu_event_management_root"
+              sequence="2"/>
+
+    <menuitem id="menu_event_location_master"
+              name="Location"
+              parent="menu_event_management_root"
+              sequence="3"/>
+
+    <menuitem id="menu_event_session_master"
+              name="Session"
+              parent="menu_event_management_root"
+              sequence="4"/>
+
+    <menuitem id="menu_event_sponsor_master"
+              name="Sponsor"
+              parent="menu_event_management_root"
+              sequence="5"/>
+
+    <menuitem id="menu_event_booking_master"
+              name="Booking"
+              parent="menu_event_management_root"
+              sequence="6"/>
+
+    <menuitem id="menu_event_guest_master"
+              name="Guest"
+              parent="menu_event_management_root"
+              sequence="7"/>
+
+    <menuitem id="menu_event_configuration_master"
+              name="Configuration"
+              parent="menu_event_management_root"
+              sequence="8"/>
+</odoo>

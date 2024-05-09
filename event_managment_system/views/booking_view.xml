@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+
+    <record id="action_mark_as_paid" model="ir.actions.server">
+        <field name="name">Mark As Paid</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_event_booking"/>
+        <field name="binding_model_id" ref="model_event_booking"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+            for record in records:
+                if record.payment_status == "unpaid":
+                    record.action_done()
+        </field>
+    </record>
+
+    #-----------------form view----------------------
+
+    <record id="view_event_booking_form" model="ir.ui.view">
+        <field name="name">event.booking.form</field>
+        <field name="model">event.booking</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="payment_status_update" string="Update Payment Status" type="object"/>
+                    <field name="payment_status" widget="statusbar" nolabel="1" options="{'clickable':'1'}"
+                           statusbar_visible="paid,unpaid"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="event_id"/>
+                            <field name="attendee_id" options="{'no_open':True,'no_create':True}"/>
+                            <field name="booking_date"/>
+                            <field name="status"/>
+                        </group>
+                        <group>
+                            <field name="payment_transaction_id"/>
+                            <field name="total_price"/>
+                            <field name="currency_id"/>
+                            <field name="payment_status"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    #-----------------Tree view----------------------
+
+    <record id="view_event_booking_tree" model="ir.ui.view">
+        <field name="name">event.booking.tree</field>
+        <field name="model">event.booking</field>
+        <field name="arch" type="xml">
+            <tree sample="1" expand="1">
+                <field name="event_id"/>
+                <field name="attendee_id" widget="many2onebutton"/>
+                <field name="booking_date"/>
+                <field name="status"/>
+                <field name="total_price"/>
+                <field name="currency_id"/>
+                <field name="payment_status"
+                       decoration-success="payment_status == 'paid'" decoration-danger="payment_status in ('unpaid')"
+                       widget="badge"/>
+                <field name="payment_transaction_id"/>
+            </tree>
+        </field>
+    </record>
+
+    #-----------------graph view----------------------
+
+    <record id="view_event_booking_graph" model="ir.ui.view">
+        <field name="name">event.booking.graph</field>
+        <field name="model">event.booking</field>
+        <field name="arch" type="xml">
+            <graph>
+                <field name="status"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_event_booking_search" model="ir.ui.view">
+        <field name="name">event.booking.search</field>
+        <field name="model">event.booking</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="event_id"/>
+                <field name="attendee_id"/>
+                <field name="booking_date"/>
+                <field name="status"/>
+                <field name="total_price"/>
+                <field name="currency_id"/>
+                <field name="payment_status"/>
+                <field name="payment_transaction_id"/>
+                <filter name="filter_paid" string="Paid" domain="[('payment_status','=','paid')]"/>
+                <filter name="filter_unpaid" string="Unpaid" domain="[('payment_status','=','unpaid')]"/>
+                <group expand="0" string="Group by">
+                    <filter name="group_by_payment_status" string="Payment Status" context="{'group_by':'payment_status'}"/>
+                </group>
+                <group expand="1" string="Group by">
+                    <filter name="group_by_event_id" string="Event" context="{'group_by':'event_id'}"/>
+                </group>
+                <searchpanel>
+                    <field name="payment_status" string="Payment Status" enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    #-----------------action for attendee----------------------
+
+    <record id="action_event_booking" model="ir.actions.act_window">
+        <field name="res_model">event.booking</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form,graph</field>
+        <field name="context">{'group_by':'event_id'}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Event Booking !
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_event_booking"
+              name="Booking list"
+              parent="menu_event_booking_master"
+              action="action_event_booking"
+              sequence="1"/>
+</odoo>

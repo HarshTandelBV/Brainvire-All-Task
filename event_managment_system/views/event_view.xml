@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+
+    #-----------------form view----------------------
+
+    <record id="view_event_event_form" model="ir.ui.view">
+        <field name="name">event.event.form</field>
+        <field name="model">event.event</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="%(event_managment_system.action_event_track)d" string="Go to Session" type="action" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_session" type="object" class="oe_stat_button" icon="fa-calendar">
+                            <div class="o_stat_info">
+                                <field name="session_count" class="o_stat_value"/>
+                                <span class="o_stat_text">Sessions</span>
+                            </div>
+                        </button>
+                        <button name="action_open_ticket_details" type="object" class="oe_stat_button" icon="fa-ticket">
+                            <div class="o_stat_info">
+                                <field name="ticket_count" class="o_stat_value"/>
+                                <span class="o_stat_text">Tickets</span>
+                            </div>
+                        </button>
+                        <button name="action_open_attendee_details" type="object" class="oe_stat_button" icon="fa-user">
+                            <div class="o_stat_info">
+                                <field name="attendee_count" class="o_stat_value"/>
+                                <span class="o_stat_text">Attendee</span>
+                            </div>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+                        <group>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="location"/>
+                        </group>
+                        <group>
+                            <field name="guest_ids" widget="many2many_tags"/>
+                            <field name="registration_open_date"/>
+                            <field name="registration_close_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Attendee Record">
+                            <field name="booking_ids">
+                                <tree editable="bottom" widget="section_and_note_one2many">
+                                    <control>
+                                        <create string="Add a line"/>
+                                        <create string="Add a section" context="{'default_display_type':'line_section'}"/>
+                                        <create string="Add a note" context="{'default_display_type':'line_note'}"/>
+                                    </control>
+                                    <field name="attendee_id"/>
+                                    <field name="event_id"/>
+                                    <field name="booking_date"/>
+                                    <field name="status"/>
+                                    <field name="total_price"/>
+                                    <field name="payment_status"/>
+                                </tree>
+                                <form>
+                                    <field name="attendee_id"/>
+                                    <field name="event_id"/>
+                                    <field name="booking_date"/>
+                                    <field name="status"/>
+                                    <field name="total_price"/>
+                                    <field name="payment_status"/>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Sponsor Details">
+                            <field name="sponsor_ids">
+                                <tree editable="bottom" widget="section_and_note_one2many">
+                                    <control>
+                                        <create string="Add a line"/>
+                                        <create string="Add a section" context="{'default_display_type':'line_section'}"/>
+                                        <create string="Add a note" context="{'default_display_type':'line_note'}"/>
+                                    </control>
+                                    <field name="name"/>S
+                                    <field name="website"/>
+                                    <field name="email"/>
+                                    <field name="phone"/>
+                                    <field name="sponsorship_level"/>
+                                </tree>
+                                <form>
+                                    <field name="name"/>
+                                    <field name="logo"/>
+                                    <field name="website"/>
+                                    <field name="email"/>
+                                    <field name="phone"/>
+                                    <field name="sponsorship_level"/>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Tickets Record">
+                            <field name="ticket_ids">
+                                <tree editable="bottom" widget="section_and_note_one2many">
+                                    <control>
+                                        <create string="Add a line"/>
+                                        <create string="Add a section" context="{'default_display_type':'line_section'}"/>
+                                        <create string="Add a note" context="{'default_display_type':'line_note'}"/>
+                                    </control>
+                                    <field name="ticket_type"/>
+                                    <field name="price"/>
+                                    <field name="available_ticket"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    #-------------------Tree view----------------------
+
+    <record id="view_event_event_tree" model="ir.ui.view">
+        <field name="name">event.event.tree</field>
+        <field name="model">event.event</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="location"/>
+                <field name="guest_ids"/>
+                <field name="registration_open_date"/>
+                <field name="registration_close_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_event_event_search" model="ir.ui.view">
+        <field name="name">event.event.search</field>
+        <field name="model">event.event</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="location"/>
+                <field name="guest_ids"/>
+            </search>
+        </field>
+    </record>
+
+    #-------------------calendar view----------------------
+
+    <record id="view_event_event_calendar" model="ir.ui.view">
+        <field name="name">event.event.calendar</field>
+        <field name="model">event.event</field>
+        <field name="arch" type="xml">
+            <calendar string="Event Calendar" date_start="start_date" date_stop="end_date" mode="month" color="name">
+                <field name="name"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="location"/>
+                <field name="guest_ids"/>
+                <field name="registration_open_date"/>
+                <field name="registration_close_date"/>
+            </calendar>
+        </field>
+    </record>
+
+    #---------------------action for event----------------------
+
+    <record id="action_event_event" model="ir.actions.act_window">
+        <field name="name">Events</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">event.event</field>
+        <field name="view_mode">tree,form,calendar</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Event !
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_event_event"
+              name="Event list"
+              parent="menu_event_event_master"
+              action="action_event_event"
+              sequence="1"/>
+</odoo>

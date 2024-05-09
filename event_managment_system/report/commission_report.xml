@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="sale_commission_qweb_report_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <div style="white-space: nowrap;">
+                                <br/>
+                                <div>
+                                    <h3>
+                                        <span t-field="o.user_id.name"/>
+                                    </h3>
+                                    <div>
+                                        <div style="display: inline-block; vertical-align: top; margin-right: 100px;">
+                                            <ul>
+                                                <li>
+                                                    <strong>Starting Date:</strong>
+                                                    <span t-field="o.start_date" t-options='{"widget": "date"}'/>
+                                                </li>
+                                                <li>
+                                                    <strong>Total Orders:</strong>
+                                                    <span t-field="o.total_orders" />
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div style="display: inline-block; vertical-align: top; margin-right: 20px;">
+                                            <ul>
+                                                <li>
+                                                    <strong>Ending Date:</strong>
+                                                    <span t-field="o.end_date" t-options='{"widget": "date"}'/>
+                                                </li>
+                                                <li>
+                                                    <strong>Total Commission:</strong>
+                                                    <span t-field="o.total_commission"/>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <hr style="color:black;"/>
+                                    <table class="table table-sm o_main_table table-borderless mt-4">
+                                        <thead style="display: table-row-group">
+                                            <tr>
+                                                <th class="text-start">Name</th>
+                                                <th class="text-end">Order Date</th>
+                                                <th class="text-end">Customer</th>
+                                                <th class="text-end">Percentage</th>
+                                                <th class="text-end">Total Amount</th>
+                                                <th class="text-end">Commission</th>
+                                            </tr>
+                                        </thead>
+                                        <t t-foreach="o.sale_order_ids" t-as="c">
+                                            <tbody class="sale_tbody">
+                                                <tr>
+                                                    <td>
+                                                        <span t-field="c.name"/>
+                                                    </td>
+                                                    <td class="text-end">
+                                                        <span t-field="c.date_order"/>
+                                                    </td>
+                                                    <td class="text-end">
+                                                        <span t-field="c.partner_id.name"/>
+                                                    </td>
+                                                    <td class="text-end">
+                                                        <span t-field="c.percent_commission"/>
+                                                    </td>
+                                                    <td class="text-end">
+                                                        <span t-field="c.amount_total"/>
+                                                    </td>
+                                                    <td class="text-end">
+                                                        <span t-field="c.commission"/>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </t>
+                                    </table>
+                                    <div id="right-elements"
+                                         t-attf-class="#{'col-5' if report_type != 'html' else 'col-12 col-md-5'} ms-5 d-inline-block float-end">
+                                        <div id="total" class="clearfix row">
+                                            <div class="ms-auto">
+                                                <table class="table table-sm table-borderless"
+                                                       style="page-break-inside: avoid; position:relative;">
+                                                    <tbody>
+                                                        <tr class="border-black o_total">
+                                                            <td>
+                                                                <strong>Total</strong>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <span class="text-nowrap">$
+                                                                    <span t-field="docs.total_commission">
+                                                                        22,137.50
+                                                                    </span>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+
+
+    <report
+            id="sale_commission_report_id"
+            model="sale.commission"
+            report_type="qweb-pdf"
+            string="Print Event Data"
+            name="event_managment_system.event_event_qweb_report_template"
+            file="event_managment_system.event_event_qweb_report_template"
+    />
+
+    <record id="action_report_sale_commission" model="ir.actions.report">
+        <field name="name">Sale Commission</field>
+        <field name="type">ir.actions.report</field>
+        <field name="model">sale.commission</field>
+        <field name="report_name">event_managment_system.sale_commission_qweb_report_template</field>
+        <field name="report_file">event_managment_system.sale_commission_qweb_report_template</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="binding_model_id" ref="model_sale_commission"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

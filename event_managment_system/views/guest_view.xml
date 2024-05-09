@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+
+    #-----------------form view----------------------
+
+    <record id="view_event_guest_form" model="ir.ui.view">
+        <field name="name">event.guest.form</field>
+        <field name="model">event.guest</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="check_orm" string="Check ORM" type="object" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <field name="image" widget="image" style="width:100px;height:100px;"/>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="profession"/>
+                        </group>
+                        <group>
+                            <field name="email"/>
+                            <field name="mobile"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Events record Data">
+                            <field name="event_ids">
+                                <tree editable="bottom" widget="section_and_note_one2many">
+                                    <control>
+                                        <create string="Add a line"/>
+                                        <create string="Add a section" context="{'default_display_type':'line_section'}"/>
+                                        <create string="Add a note" context="{'default_display_type':'line_note'}"/>
+                                    </control>
+                                    <field name="name"/>
+                                    <field name="description"/>
+                                    <field name="start_date"/>
+                                    <field name="end_date"/>
+                                    <field name="location"/>
+                                </tree>
+                                <form>
+                                    <field name="name"/>
+                                    <field name="description"/>
+                                    <field name="start_date"/>
+                                    <field name="end_date"/>
+                                    <field name="location"/>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    #-----------------Tree view----------------------
+
+    <record id="view_event_guest_tree" model="ir.ui.view">
+        <field name="name">event.guest.tree</field>
+        <field name="model">event.guest</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="profession"/>
+                <field name="email"/>
+                <field name="mobile"/>
+                <field name="image"/>
+            </tree>
+        </field>
+    </record>
+
+    #-----------------Tree view----------------------
+
+    <record id="view_event_guest_kanban" model="ir.ui.view">
+        <field name="name">event.guest.kanban</field>
+        <field name="model">event.guest</field>
+        <field name="arch" type="xml">
+            <kanban string="Guest Kanban" class="o_res_partner_kanban">
+                <field name="id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click" style="height:135px;">
+                            <div style="width:30%;float:left;display:inline-block;">
+                                <img alt="Avatar" t-att-src="kanban_image('event.guest','image',record.id.raw_value)" style="width:100px;height:100px"/>
+                            </div>
+                            <div style="width:70%;float:right;display:inline-block;">
+                                <ul style="list-style-type:None;">
+                                    <li>
+                                        Name: <field name="name"/>
+                                    </li>
+                                    <li>
+                                        Mobile: <field name="mobile"/>
+                                    </li>
+                                    <li>
+                                        Email: <field name="email"/>
+                                    </li>
+                                    <li>
+                                        Bio: <field name="profession"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    #-----------------action for Guest----------------------
+
+    <record id="action_event_guest" model="ir.actions.act_window">
+        <field name="res_model">event.guest</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Guest Registration !
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_event_guest"
+              name="guest list"
+              parent="menu_event_guest_master"
+              action="action_event_guest"
+              sequence="1"/>
+</odoo>

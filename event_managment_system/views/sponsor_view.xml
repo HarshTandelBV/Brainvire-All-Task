@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+
+    #-----------------form view----------------------
+
+    <record id="view_event_sponsor_form" model="ir.ui.view">
+        <field name="name">event.sponsor.form</field>
+        <field name="model">event.sponsor</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="logo" widget="image" style="width:100px;height:100px;"/>
+                            <field name="website"/>
+                        </group>
+                        <group>
+                            <field name="email"/>
+                            <field name="phone"/>
+                            <field name="sponsorship_level"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Event Details">
+                            <field name="event_ids">
+                                <tree editable="bottom" widget="section_and_note_one2many">
+                                    <control>
+                                        <create string="Add a line"/>
+                                        <create string="Add a section" context="{'default_display_type':'line_section'}"/>
+                                        <create string="Add a note" context="{'default_display_type':'line_note'}"/>
+                                    </control>
+                                    <field name="name"/>
+                                    <field name="description"/>
+                                    <field name="start_date"/>
+                                    <field name="end_date"/>
+                                    <field name="location"/>
+                                </tree>
+                                <form>
+                                    <field name="name"/>
+                                    <field name="description"/>
+                                    <field name="start_date"/>
+                                    <field name="end_date"/>
+                                    <field name="location"/>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    #-----------------Tree view----------------------
+
+    <record id="view_event_sponsor_tree" model="ir.ui.view">
+        <field name="name">event.sponsor.tree</field>
+        <field name="model">event.sponsor</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="logo"/>
+                <field name="website"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <field name="sponsorship_level"/>
+                <field name="event_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    #-----------------graph view----------------------
+
+    <record id="view_event_sponsor_graph" model="ir.ui.view">
+        <field name="name">event.sponsor.graph</field>
+        <field name="model">event.sponsor</field>
+        <field name="arch" type="xml">
+            <graph>
+                <field name="sponsorship_level"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_event_sponsor_kanban" model="ir.ui.view">
+        <field name="name">event.sponsor.kanban</field>
+        <field name="model">event.sponsor</field>
+        <field name="arch" type="xml">
+            <kanban string="Sponsor Kanban" class="o_res_partner_kanban">
+                <field name="id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click" style="height:150px;display: flex; justify-content: center; align-items: center;flex-direction: column;">
+                            <div style="height:80%;width:100%; text-align:center;">
+                                <img alt="Logo" t-att-src="kanban_image('event.sponsor','logo',record.id.raw_value)" style="max-width: 150px; max-height: 150px;"/>
+                            </div>
+                            <div style="height:20%;width:100%; text-align:center; margin-top:10px;">
+                                <h3>
+                                    <field name="name"/>
+                                </h3>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    #-----------------action for attendee----------------------
+
+    <record id="action_event_sponsor" model="ir.actions.act_window">
+        <field name="res_model">event.sponsor</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">kanban,tree,form,graph</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Attendee Registration !
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_event_sponsor"
+              name="Sponsor list"
+              parent="menu_event_sponsor_master"
+              action="action_event_sponsor"
+              sequence="1"/>
+</odoo>

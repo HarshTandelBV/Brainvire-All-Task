@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <record id="sequence_for_attendee_registration" model="ir.sequence">
+        <field name="name">Attendee Registration Sequence Number</field>
+        <field name="code">attendee.seq.registration</field>
+        <field name="padding">4</field>
+        <field name="prefix">AR</field>
+        <field name="company_id" eval="False"/>
+    </record>
+</odoo>

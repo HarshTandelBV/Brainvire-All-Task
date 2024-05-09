@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="event_event_qweb_report_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <div style="white-space: nowrap;">
+                                <div>
+                                    <h1>
+                                        <span t-esc="o.name"/>
+                                    </h1>
+                                    <strong>Description:</strong>
+                                    <span t-esc="o.description"/>
+                                </div>
+                                <!-- >>>>>>>>>>>>>>>>>>>Event Details<<<<<<<<<<<<<<< -->
+                                <div>
+                                    <div style="display: inline-block; vertical-align: top; margin-right: 100px;">
+                                        <ul>
+                                            <br/>
+                                            <br/>
+                                            <li>
+                                                <strong>Start Date:</strong>
+                                                <span t-esc="o.start_date"/>
+                                            </li>
+                                            <li>
+                                                <strong>End Date:</strong>
+                                                <span t-esc="o.end_date"/>
+                                            </li>
+                                            <li>
+                                                <strong>Location:</strong>
+                                                <span t-esc="o.location"/>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div style="display: inline-block; vertical-align: top; margin-right: 20px;">
+                                        <ul>
+                                            <br/>
+                                            <br/>
+                                            <li>
+                                                <strong>Registration Start Date:</strong>
+                                                <span t-esc="o.registration_open_date"/>
+                                            </li>
+                                            <li>
+                                                <strong>Registration End Date:</strong>
+                                                <span t-esc="o.registration_close_date"/>
+                                            </li>
+                                            <li>
+                                                <strong>Guests:</strong>
+                                                <t t-foreach="o.guest_ids" t-as="g">
+                                                    <span t-esc="g.name"/>
+                                                </t>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div>
+                                    <h3>Attendee Record</h3>
+                                    <hr style="color:black;"/>
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Booking Date</th>
+                                                <th>Status</th>
+                                                <th>Total Price</th>
+                                                <th>Payment Status</th>
+                                            </tr>
+                                        </thead>
+                                        <t t-foreach="o.booking_ids" t-as="c">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <span t-field="c.attendee_id.attendee"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="c.booking_date"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="c.status"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="c.total_price"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="c.payment_status"/>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </t>
+                                    </table>
+                                </div>
+                                <div>
+                                    <h3>Sponsor Details</h3>
+                                    <hr style="color:black;"/>
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Website</th>
+                                                <th>Email</th>
+                                                <th>Phone</th>
+                                                <th>Level</th>
+                                            </tr>
+                                        </thead>
+                                        <t t-foreach="o.sponsor_ids" t-as="s">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <span t-field="s.name"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="s.website"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="s.email"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="s.phone"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="s.sponsorship_level"/>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </t>
+                                    </table>
+                                </div>
+                                <div>
+                                    <h3>Ticket Details</h3>
+                                    <hr style="color:black;"/>
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Ticket Type</th>
+                                                <th>Price</th>
+                                                <th>Available Ticket</th>
+                                            </tr>
+                                        </thead>
+                                        <t t-foreach="o.ticket_ids" t-as="t">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <span t-field="t.ticket_type"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="t.price"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="t.available_ticket"/>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </t>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+
+
+    <report
+            id="event_event_report_id"
+            model="event.event"
+            report_type="qweb-pdf"
+            string="Print Event Data"
+            name="event_managment_system.event_event_qweb_report_template"
+            file="event_managment_system.event_event_qweb_report_template"
+    />
+
+    <record id="action_report_event_event" model="ir.actions.report">
+        <field name="name">Event Event</field>
+        <field name="type">ir.actions.report</field>
+        <field name="model">event.event</field>
+        <field name="report_name">event_managment_system.event_event_qweb_report_template</field>
+        <field name="report_file">event_managment_system.event_event_qweb_report_template</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="binding_model_id" ref="model_event_event"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

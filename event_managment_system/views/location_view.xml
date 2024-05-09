@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+
+    #-----------------form view----------------------
+
+    <record id="view_event_location_form" model="ir.ui.view">
+        <field name="name">event.location.form</field>
+        <field name="model">event.location</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div>
+                        <h1>
+                            <field name="priority" widget="priority"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="location_name"/>
+                            <field name="address"/>
+                        </group>
+                        <group>
+                            <field name="capacity"/>
+                            <field name="facilities" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    #-----------------Tree view----------------------
+
+    <record id="view_event_location_tree" model="ir.ui.view">
+        <field name="name">event.location.tree</field>
+        <field name="model">event.location</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="location_name"/>
+                <field name="address"/>
+                <field name="capacity"/>
+                <field name="facilities" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    #-----------------graph view----------------------
+
+    <record id="view_event_location_graph" model="ir.ui.view">
+        <field name="name">event.location.graph</field>
+        <field name="model">event.location</field>
+        <field name="arch" type="xml">
+            <graph>
+                <field name="facilities"/>
+            </graph>
+        </field>
+    </record>
+
+    #-----------------action for attendee----------------------
+
+    <record id="action_event_location" model="ir.actions.act_window">
+        <field name="res_model">event.location</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form,graph</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add your first Location Registration !
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_event_location"
+              name="Location list"
+              parent="menu_event_location_master"
+              action="action_event_location"
+              sequence="1"/>
+</odoo>

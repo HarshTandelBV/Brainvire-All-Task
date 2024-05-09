@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+
+    #-----------------form view----------------------
+
+    <record id="view_event_registration_form" model="ir.ui.view">
+        <field name="name">event.registration.form</field>
+        <field name="model">event.registration</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <h1>
+                        <field name="seq_num"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="event"/>
+                            <field name="attendee"/>
+                            <field name="gender"/>
+                            <field name="dob"/>
+                        </group>
+                        <group>
+                            <field name="age"/>
+                            <field name="email"/>
+                            <field name="registration_status"/>
+                            <field name="total_event"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Booking Record" name="book_record">
+
+                        </page>
+                        <page string="Payment Record" name="pay_record">
+
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    #-----------------Tree view----------------------
+
+    <record id="view_event_registration_tree" model="ir.ui.view">
+        <field name="name">event.registration.tree</field>
+        <field name="model">event.registration</field>
+        <field name="arch" type="xml">
+            <tree expand="1" decoration-info="registration_status=='draft'" decoration-danger="registration_status=='cancelled'" decoration-success="registration_status=='confirmed'">
+                <field name="sequence" widget="handle"/>
+                <field name = 'seq_num'/>
+                <field name="event"/>
+                <field name="attendee"/>
+                <field name="gender"/>
+                <field name="dob"/>
+                <field name="age"/>
+                <field name="email"/>
+                <field name="registration_status"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_event_registration_search" model="ir.ui.view">
+        <field name="name">event.registration.search</field>
+        <field name="model">event.registration</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="sequence"/>
+                <field name = 'seq_num'/>
+                <field name="event"/>
+                <field name="attendee"/>
+                <field name="gender"/>
+                <field name="dob"/>
+                <field name="age"/>
+                <field name="email"/>
+                <field name="registration_status"/>
+                <filter name="filter_male" string="Male" domain="[('gender','=','male')]"/>
+                <filter name="filter_female" string="Female" domain="[('gender','=','female')]"/>
+                <filter name="filter_other" string="Other" domain="[('gender','=','other')]"/>
+                <separator/>
+                <filter name="filter_draft_status" string="Draft" domain="[('registration_status','=','draft')]"/>
+                <filter name="filter_confirmed_status" string="Confirmed" domain="[('registration_status','=','confirmed')]"/>
+                <filter name="filter_cancelled_status" string="Cancelled" domain="[('registration_status','=','cancelled')]"/>
+                <separator/>
+                <filter name="filter_kids" string="Kids" domain="[('age','&lt;=',14)]"/>
+                <filter name="filter_young_adults" string="Young Adults" domain="[('age','&lt;=',24),('age','&gt;=',14)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Gender" name="group_by_gender" context="{'group_by':'gender'}"/>
+                </group>
+                <searchpanel>
+                    <field name="registration_status" string="Registration Status" enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    #-----------------graph view----------------------
+
+    <record id="view_event_registration_graph" model="ir.ui.view">
+        <field name="name">event.registration.graph</field>
+        <field name="model">event.registration</field>
+        <field name="arch" type="xml">
+            <graph>
+                <field name="registration_status"/>
+            </graph>
+        </field>
+    </record>
+
+    #-----------------action for attendee----------------------
+
+    <record id="action_event_attendee" model="ir.actions.act_window">
+        <field name="res_model">event.registration</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form,graph</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Attendee Registration !
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_event_attendee"
+              name="attendee list"
+              parent="menu_event_attendee_master"
+              action="action_event_attendee"
+              sequence="1"/>
+</odoo>

@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+        <record id="booking_payment_status_form_view_wiz" model="ir.ui.view">
+            <field name="name">booking.payment.status.form.view.wiz</field>
+            <field name="model">booking.payment.status.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="payment_status"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Update Status" type="object" name="update_payment_status"/>
+                        <button string="Cancel" special="cancel" class="btn btn-secondary" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="booking_payment_status_action" model="ir.actions.act_window">
+            <field name="name">Booking payment status update</field>
+            <field name="res_model">booking.payment.status.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>
