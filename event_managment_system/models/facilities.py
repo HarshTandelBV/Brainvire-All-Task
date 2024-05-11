@@ -47,17 +47,17 @@ class SaleOrder(models.Model):
                     raise ValidationError("One or more products in the order are not available in sufficient quantity.")
         return res
 
-    def action_cancel(self):
-        """ Cancel SO after showing the cancel wizard when needed. (cfr :meth:`_show_cancel_wizard`)
-
-        For post-cancel operations, please only override :meth:`_action_cancel`.
-
-        note: self.ensure_one() if the wizard is shown.
-        """
-
-        if not self.image:
-            if not self.image:
-                raise UserError(_("You cannot cancel a locked order. Please upload image first."))
+    # def action_cancel(self):
+    #     """ Cancel SO after showing the cancel wizard when needed. (cfr :meth:`_show_cancel_wizard`)
+    #
+    #     For post-cancel operations, please only override :meth:`_action_cancel`.
+    #
+    #     note: self.ensure_one() if the wizard is shown.
+    #     """
+    #
+    #     if not self.image:
+    #         if not self.image:
+    #             raise UserError(_("You cannot cancel a locked order. Please upload image first."))
 
 
 class SaleOrderLine(models.Model):

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
-    'name' : 'Event Managment System',
-    'version' : '1.0.0',
+    'name': 'Event Managment System',
+    'version': '1.0.0',
     'summary': 'Event Managment System',
     'sequence': -100,
     'description': """
@@ -12,7 +12,7 @@ The specific and easy-to-use customer event management system in Odoo allows you
     """,
     'category': 'Event/Event Managment System',
     'website': 'https://www.odoo.com/',
-    'depends': ['base','sale','stock','sale_management'],
+    'depends': ['base', 'sale', 'stock', 'sale_management'],
     'data': [
         'security/ir.model.access.csv',
         'data/sequence.xml',

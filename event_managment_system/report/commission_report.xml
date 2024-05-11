@@ -33,7 +33,7 @@
                                                 </li>
                                                 <li>
                                                     <strong>Total Commission:</strong>
-                                                    <span t-field="o.total_commission"/>
+                                                    <span t-field="o.total_commission_value"/>
                                                 </li>
                                             </ul>
                                         </div>
@@ -54,22 +54,22 @@
                                             <tbody class="sale_tbody">
                                                 <tr>
                                                     <td>
-                                                        <span t-field="c.name"/>
+                                                        <span t-field="c.number"/>
                                                     </td>
                                                     <td class="text-end">
-                                                        <span t-field="c.date_order"/>
+                                                        <span t-field="c.create_date"/>
                                                     </td>
                                                     <td class="text-end">
-                                                        <span t-field="c.partner_id.name"/>
+                                                        <span t-field="c.customer_id.name"/>
                                                     </td>
                                                     <td class="text-end">
-                                                        <span t-field="c.percent_commission"/>
+                                                        <span t-field="c.percentage"/>
                                                     </td>
                                                     <td class="text-end">
-                                                        <span t-field="c.amount_total"/>
+                                                        <span t-field="c.total_amount"/>
                                                     </td>
                                                     <td class="text-end">
-                                                        <span t-field="c.commission"/>
+                                                        <span t-field="c.total_commission"/>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -88,7 +88,7 @@
                                                             </td>
                                                             <td class="text-end">
                                                                 <span class="text-nowrap">$
-                                                                    <span t-field="docs.total_commission">
+                                                                    <span t-field="docs.total_commission_value">
                                                                         22,137.50
                                                                     </span>
                                                                 </span>
