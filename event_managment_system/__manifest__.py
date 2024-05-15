@@ -15,6 +15,7 @@ The specific and easy-to-use customer event management system in Odoo allows you
     'depends': ['base', 'sale', 'stock', 'sale_management'],
     'data': [
         'security/ir.model.access.csv',
+        'security/security.xml',
         'data/sequence.xml',
         'wizard/booking_payment_status_wizard_view.xml',
         'wizard/sale_order_report_wizard_view.xml',

@@ -11,6 +11,9 @@ access_event_ticket,event.ticket,model_event_ticket,base.group_user,1,1,1,1
 access_booking_payment_status_wizard,booking.payment.status.wizard,model_booking_payment_status_wizard,base.group_user,1,1,1,1
 access_sale_order_report_wizard,sale.order.report.wizard,model_sale_order_report_wizard,base.group_user,1,1,1,1
 access_sale_commission,sale.commission,model_sale_commission,base.group_user,1,1,1,1
-access_sale_commission_online,sale.commission.online,model_sale_commission_online,base.group_user,1,1,1,1
+access_sale_commission_online,sale commission online,model_sale_commission_online,base.group_user,0,0,0,0
+access_sale_commission_online_low_level,Low level,model_sale_commission_online,event_managment_system.access_employee_low_level_group,1,0,0,0
+access_sale_commission_online_mid_level,Mid level,model_sale_commission_online,event_managment_system.access_employee_mid_level_group,1,1,1,0
+access_sale_commission_online_admin_level,Admin level,model_sale_commission_online,event_managment_system.access_employee_admin_level_group,1,1,1,1
 
 

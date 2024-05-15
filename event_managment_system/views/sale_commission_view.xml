@@ -95,7 +95,7 @@
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook/page[@name='internal_notes']" position="after">
-                <page name="commission" string="Commission">
+                <page name="commission" string="Commission" groups="base.group_system">
                     <group>
                         <field name="order_value"/>
                         <field name="percentage"/>
