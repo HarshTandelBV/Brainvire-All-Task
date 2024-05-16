@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <data>
-        <template id="sale_commission_qweb_report_template">
+        <template id="customer_sale_qweb_report_template">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
                     <t t-call="web.external_layout">
@@ -10,66 +10,54 @@
                                 <br/>
                                 <div>
                                     <h3>
-                                        <span t-field="o.user_id.name"/>
+                                        <span t-field="o.name"/>
                                     </h3>
                                     <div>
-                                        <div style="display: inline-block; vertical-align: top; margin-right: 100px;">
+                                        <div style="display: inline-block; vertical-align: top; margin-right: 300px;">
                                             <ul>
                                                 <li>
-                                                    <strong>Starting Date:</strong>
-                                                    <span t-field="o.start_date" t-options='{"widget": "date"}'/>
-                                                </li>
-                                                <li>
-                                                    <strong>Total Orders:</strong>
-                                                    <span t-field="o.total_orders" />
+                                                    <strong>Total Sales :</strong>
+                                                    <span t-field="o.sale_order_count"/>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div style="display: inline-block; vertical-align: top; margin-right: 20px;">
                                             <ul>
                                                 <li>
-                                                    <strong>Ending Date:</strong>
-                                                    <span t-field="o.end_date" t-options='{"widget": "date"}'/>
-                                                </li>
-                                                <li>
-                                                    <strong>Total Commission:</strong>
-                                                    <span t-field="o.total_commission_value"/>
+                                                    <strong>Total Amount :</strong>
+                                                    <span t-field="o.total_sale_amount"/>
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
+                                    <br/>
+                                    <h4>
+                                        Sales Details :
+                                    </h4>
                                     <hr style="color:black;"/>
                                     <table class="table table-sm o_main_table table-borderless mt-4">
                                         <thead style="display: table-row-group">
                                             <tr>
                                                 <th class="text-start">Name</th>
                                                 <th class="text-end">Order Date</th>
-                                                <th class="text-end">Customer</th>
-                                                <th class="text-end">Percentage</th>
+                                                <th class="text-end">Status</th>
                                                 <th class="text-end">Total Amount</th>
-                                                <th class="text-end">Commission</th>
                                             </tr>
                                         </thead>
-                                        <t t-foreach="o.sale_order_ids" t-as="c">
+                                        <t t-foreach="o.sale_ids" t-as="c">
                                             <tbody class="sale_tbody">
                                                 <tr>
                                                     <td>
-                                                        <span t-field="c.number"/>
+                                                        <span t-field="c.name"/>
                                                     </td>
                                                     <td class="text-end">
-                                                        <span t-field="c.create_date"/>
+                                                        <span t-field="c.date_order"/>
                                                     </td>
                                                     <td class="text-end">
-                                                        <span t-field="c.customer_id.name"/>
+                                                        <span t-field="c.invoice_status"/>
                                                     </td>
                                                     <td class="text-end">
-                                                        <span t-field="c.percentage"/>
-                                                    </td>
-                                                    <td class="text-end">
-                                                        <span t-field="c.total_amount"/>
-                                                    </td>
-                                                    <td class="text-end">
-                                                        <span t-field="c.total_commission"/>
+                                                        <span t-field="c.amount_total"/>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -88,7 +76,7 @@
                                                             </td>
                                                             <td class="text-end">
                                                                 <span class="text-nowrap">$
-                                                                    <span t-field="docs.total_commission_value">
+                                                                    <span t-field="docs.total_sale_amount">
                                                                         22,137.50
                                                                     </span>
                                                                 </span>
@@ -106,26 +94,15 @@
                 </t>
             </t>
         </template>
+        <record id="action_customer_sale_qweb_report_id" model="ir.actions.report">
+            <field name="name">Customer Sale Report</field>
+            <field name="model">res.partner</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">event_managment_system.customer_sale_qweb_report_template</field>
+            <field name="report_file">event_managment_system.customer_sale_qweb_report_template</field>
+            <field name="print_report_name">('Statement - %s' % (object.name))</field>
+            <field name="binding_model_id" ref="model_res_partner"/>
+            <field name="binding_type">report</field>
+        </record>
     </data>
-
-
-    <report
-            id="sale_commission_report_id"
-            model="sale.commission"
-            report_type="qweb-pdf"
-            string="Print Event Data"
-            name="event_managment_system.sale_commission_qweb_report_template"
-            file="event_managment_system.sale_commission_qweb_report_template"
-    />
-
-    <record id="action_report_sale_commission" model="ir.actions.report">
-        <field name="name">Sale Commission</field>
-        <field name="type">ir.actions.report</field>
-        <field name="model">sale.commission</field>
-        <field name="report_name">event_managment_system.sale_commission_qweb_report_template</field>
-        <field name="report_file">event_managment_system.sale_commission_qweb_report_template</field>
-        <field name="report_type">qweb-pdf</field>
-        <field name="binding_model_id" ref="model_sale_commission"/>
-        <field name="binding_type">report</field>
-    </record>
 </odoo>

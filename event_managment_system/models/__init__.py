@@ -7,3 +7,4 @@ from . import guest
 from . import session
 from . import sponsor
 from . import sale_commission
+from . import sale_customer
