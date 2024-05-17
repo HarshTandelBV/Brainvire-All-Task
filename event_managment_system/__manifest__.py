@@ -20,6 +20,7 @@ The specific and easy-to-use customer event management system in Odoo allows you
         'data/email_template.xml',
         'wizard/booking_payment_status_wizard_view.xml',
         'wizard/sale_order_report_wizard_view.xml',
+        'wizard/sale_order_excel_report_wizard_view.xml',
         'views/menu.xml',
         'views/event_view.xml',
         'views/attendee_view.xml',
