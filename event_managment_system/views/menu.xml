@@ -41,8 +41,13 @@
               parent="menu_event_management_root"
               sequence="7"/>
 
+    <menuitem id="menu_event_event_report_master"
+              name="Reporting"
+              parent="menu_event_management_root"
+              sequence="8"/>
+
     <menuitem id="menu_event_configuration_master"
               name="Configuration"
               parent="menu_event_management_root"
-              sequence="8"/>
+              sequence="9"/>
 </odoo>

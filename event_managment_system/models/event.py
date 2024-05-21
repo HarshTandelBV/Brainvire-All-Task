@@ -3,9 +3,10 @@ from odoo import models, fields, api, _
 
 class EventEvent(models.Model):
     _name = 'event.event'
+    _inherit = ['mail.thread','mail.activity.mixin']
     _description = 'Event'
 
-    name = fields.Char(string="Name", required=True)
+    name = fields.Char(string="Name", required=True, tracking=True)
     description = fields.Text(string="Description")
     start_date = fields.Datetime(string='Start Date', tracking=True)
     end_date = fields.Datetime(string="End Date", tracking=True)

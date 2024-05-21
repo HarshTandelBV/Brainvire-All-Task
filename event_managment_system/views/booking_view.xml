@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <odoo>
+    <record id="payment_status_update_wiz_window" model="ir.actions.act_window">
+        <field name="name">Update Payment</field>
+        <field name="res_model">booking.payment.status.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="event_managment_system.booking_payment_status_form_view_wiz"/>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_event_booking"/>
+        <field name="binding_view_types">form</field>
+    </record>
 
     <record id="action_mark_as_paid" model="ir.actions.server">
         <field name="name">Mark As Paid</field>
@@ -11,8 +20,8 @@
         <field name="state">code</field>
         <field name="code">
             for record in records:
-                if record.payment_status == "unpaid":
-                    record.action_done()
+            if record.payment_status == "unpaid":
+                record.action_done()
         </field>
     </record>
 
@@ -97,7 +106,8 @@
                 <filter name="filter_paid" string="Paid" domain="[('payment_status','=','paid')]"/>
                 <filter name="filter_unpaid" string="Unpaid" domain="[('payment_status','=','unpaid')]"/>
                 <group expand="0" string="Group by">
-                    <filter name="group_by_payment_status" string="Payment Status" context="{'group_by':'payment_status'}"/>
+                    <filter name="group_by_payment_status" string="Payment Status"
+                            context="{'group_by':'payment_status'}"/>
                 </group>
                 <group expand="1" string="Group by">
                     <filter name="group_by_event_id" string="Event" context="{'group_by':'event_id'}"/>

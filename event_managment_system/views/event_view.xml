@@ -10,7 +10,8 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="%(event_managment_system.action_event_track)d" string="Go to Session" type="action" class="oe_highlight"/>
+                    <button name="%(event_managment_system.action_event_track)d" string="Go to Session" type="action"
+                            class="oe_highlight"/>
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
@@ -55,7 +56,8 @@
                                 <tree editable="bottom" widget="section_and_note_one2many">
                                     <control>
                                         <create string="Add a line"/>
-                                        <create string="Add a section" context="{'default_display_type':'line_section'}"/>
+                                        <create string="Add a section"
+                                                context="{'default_display_type':'line_section'}"/>
                                         <create string="Add a note" context="{'default_display_type':'line_note'}"/>
                                     </control>
                                     <field name="attendee_id"/>
@@ -80,7 +82,8 @@
                                 <tree editable="bottom" widget="section_and_note_one2many">
                                     <control>
                                         <create string="Add a line"/>
-                                        <create string="Add a section" context="{'default_display_type':'line_section'}"/>
+                                        <create string="Add a section"
+                                                context="{'default_display_type':'line_section'}"/>
                                         <create string="Add a note" context="{'default_display_type':'line_note'}"/>
                                     </control>
                                     <field name="name"/>S
@@ -104,7 +107,8 @@
                                 <tree editable="bottom" widget="section_and_note_one2many">
                                     <control>
                                         <create string="Add a line"/>
-                                        <create string="Add a section" context="{'default_display_type':'line_section'}"/>
+                                        <create string="Add a section"
+                                                context="{'default_display_type':'line_section'}"/>
                                         <create string="Add a note" context="{'default_display_type':'line_note'}"/>
                                     </control>
                                     <field name="ticket_type"/>
@@ -115,6 +119,12 @@
                         </page>
                     </notebook>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"
+                           options="{'post_refresh': 'recipients'}"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>

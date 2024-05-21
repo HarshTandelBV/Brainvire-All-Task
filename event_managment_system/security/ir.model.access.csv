@@ -16,5 +16,5 @@ access_sale_commission_online_low_level,Low level,model_sale_commission_online,e
 access_sale_commission_online_mid_level,Mid level,model_sale_commission_online,event_managment_system.access_employee_mid_level_group,1,1,1,0
 access_sale_commission_online_admin_level,Admin level,model_sale_commission_online,event_managment_system.access_employee_admin_level_group,1,1,1,1
 access_sale_order_excel_report_wizard,sale.order.excel.report.wizard,model_sale_order_excel_report_wizard,base.group_user,1,1,1,1
-
+access_event_event_report,event.event.report,model_event_event_report,base.group_user,1,1,1,1
 

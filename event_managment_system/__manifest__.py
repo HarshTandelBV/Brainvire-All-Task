@@ -12,7 +12,7 @@ The specific and easy-to-use customer event management system in Odoo allows you
     """,
     'category': 'Event/Event Managment System',
     'website': 'https://www.odoo.com/',
-    'depends': ['base', 'sale', 'stock', 'sale_management'],
+    'depends': ['base', 'sale', 'stock', 'sale_management','mail'],
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',
@@ -33,6 +33,7 @@ The specific and easy-to-use customer event management system in Odoo allows you
         'views/ticket_view.xml',
         'views/sale_commission_view.xml',
         'views/sale_customer_view.xml',
+        'views/event_report_view.xml',
         'report/event_report.xml',
         'report/invoice_report.xml',
         'report/commission_report.xml',
