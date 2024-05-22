@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_event_excel_report_wizard" model="ir.ui.view">
+            <field name="name">event.excel.report.wizard.form</field>
+            <field name="model">event.excel.report</field>
+            <field name="arch" type="xml">
+                <form string="Event Excel Report Wizard">
+<!--                    <group>-->
+<!--                        <field name="file" filename="file_name"/>-->
+<!--                    </group>-->
+                    <footer>
+                        <button name="print_xlsx_report" string="Print Excel Report" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_event_excel_report" model="ir.actions.act_window">
+            <field name="name">Event Excel Report</field>
+            <field name="res_model">event.excel.report</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_event_excel_report" name="Excel Report" parent="menu_event_event_report_master"
+                  action="action_event_excel_report" sequence="10"/>
+
+    </data>
+</odoo>

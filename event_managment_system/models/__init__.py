@@ -9,3 +9,4 @@ from . import sponsor
 from . import sale_commission
 from . import sale_customer
 from . import event_report
+from . import event_xlsx_report

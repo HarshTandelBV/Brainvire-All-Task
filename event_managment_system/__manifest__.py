@@ -18,6 +18,7 @@ The specific and easy-to-use customer event management system in Odoo allows you
         'security/security.xml',
         'data/sequence.xml',
         'data/email_template.xml',
+        'data/birthday_reminder.xml',
         'wizard/booking_payment_status_wizard_view.xml',
         'wizard/sale_order_report_wizard_view.xml',
         'wizard/sale_order_excel_report_wizard_view.xml',
@@ -37,7 +38,8 @@ The specific and easy-to-use customer event management system in Odoo allows you
         'report/event_report.xml',
         'report/invoice_report.xml',
         'report/commission_report.xml',
-        'report/sale_customer_report.xml'
+        'report/sale_customer_report.xml',
+        'report/event_xlsx_report_view.xml'
     ],
     'demo': [],
     'installable': True,

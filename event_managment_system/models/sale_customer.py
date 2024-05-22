@@ -1,3 +1,5 @@
+from datetime import date
+
 from odoo import fields, models, api, _
 
 
@@ -6,6 +8,7 @@ class ResPartner(models.Model):
 
     sale_ids = fields.One2many('sale.order','partner_id',string='sales Details')
     total_sale_amount = fields.Float(compute="_compute_total")
+    dob = fields.Date(string="DOB")
 
     def _compute_total(self):
         total = 0
@@ -13,7 +16,17 @@ class ResPartner(models.Model):
             total = total + item.amount_total
         self.total_sale_amount = round(total, 2)
 
+    @api.model
+    def _customer_birthday_reminder(self):
+        today = date.today()
+        customer_with_birthday = self.search([('dob', '=', today)])
 
+        for customer in customer_with_birthday:
+            self.env['mail.mail'].create({
+                'subject': "Happy Birthday!",
+                'body_html': f"<p>Happy Birthday, {customer.name}!</p>",
+                'email_to': customer.email,
+            }).send()
 
     def action_customer_sale_details(self):
         """ Opens a wizard to compose an email, with relevant mail template loaded by default """

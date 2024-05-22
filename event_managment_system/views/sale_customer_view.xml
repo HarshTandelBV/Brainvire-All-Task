@@ -2,6 +2,8 @@
 <odoo>
     <data>
 
+
+
         <record id="view_res_partner_form_inherit_my" model="ir.ui.view">
             <field name="name">res.partner.form.my</field>
             <field name="model">res.partner</field>
@@ -9,11 +11,15 @@
             <field name="arch" type="xml">
                 <xpath expr="//form/sheet" position="before">
                     <group>
-                        <field name="customer_rank" />
+                        <field name="customer_rank"/>
                     </group>
                     <header>
-                        <button name="action_customer_sale_details" type="object" string="Send by Email" invisible="customer_rank == 0" />
+                        <button name="action_customer_sale_details" type="object" string="Send by Email"
+                                invisible="customer_rank == 0"/>
                     </header>
+                </xpath>
+                <xpath expr="//form/sheet/group/group/field[@name='email']" position="after">
+                    <field name="dob"/>
                 </xpath>
             </field>
         </record>

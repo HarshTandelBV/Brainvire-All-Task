@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime
 from odoo import fields, models, api, _
 from odoo.exceptions import ValidationError, UserError
 
@@ -26,6 +26,71 @@ class AttendeeRegistration(models.Model):
     total_event = fields.Integer(string="Total Event", compute='_compute_total_event')
     seq_num = fields.Char(string='Seq no. ', readonly=True, copy=False, index=True, default=lambda self: _('New'))
     sequence = fields.Integer(string="seq.")
+
+    @api.model
+    def birthday_reminder(self):
+        today = date.today()
+        attendees_with_birthday = self.search([('dob', '=', today)])
+
+        for attendee in attendees_with_birthday:
+            body_html = (
+                f"<html>"
+                f"<head>"
+                f"<style>"
+                f"body {{"
+                f"    background-color: #f4f4f4;"
+                f"    padding: 20px;"
+                f"}}"
+                f".container {{"
+                f"    max-width: 600px;"
+                f"    margin: 0 auto;"
+                f"    background-color: #fff;"
+                f"    border-radius: 8px;"
+                f"    padding: 20px;"
+                f"    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);"
+                f"}}"
+                f".header {{"
+                f"    background-color: #735DA5;"
+                f"    color: #1AA7EC;"
+                f"    padding: 10px;"
+                f"    border-radius: 8px 8px 0 0;"
+                f"}}"
+                f".content {{"
+                f"    padding: 20px;"
+                f"}}"
+                f".footer {{"
+                f"    background-color: #735DA5;"
+                f"    color: #1AA7EC;"
+                f"    padding: 10px;"
+                f"    border-radius: 0 0 8px 8px;"
+                f"    text-align: center;"
+                f"}}"
+                f"</style>"
+                f"</head>"
+                f"<body>"
+                f"<div class='container'>"
+                f"<div class='header'>"
+                f"<h2>Happy Birthday!</h2>"
+                f"</div>"
+                f"<div class='content'>"
+                f"<p>Dear {attendee.attendee},</p>"
+                f"<p>Wishing you a fantastic birthday filled with joy, laughter, and wonderful memories!</p>"
+                f"<p>Best regards,</p>"
+                f"<p>Brainvire Family</p>"
+                f"</div>"
+                f"<div class='footer'>"
+                f"<p>© {datetime.now().year} Brainvire. All rights reserved.</p>"
+                f"</div>"
+                f"</div>"
+                f"</body>"
+                f"</html>"
+            )
+
+            self.env['mail.mail'].create({
+                'subject': "Happy Birthday!",
+                'body_html': body_html,
+                'email_to': attendee.email,
+            }).send()
 
     @api.model
     def default_get(self,fields):
