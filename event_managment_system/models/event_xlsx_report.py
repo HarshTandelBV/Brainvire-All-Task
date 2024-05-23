@@ -51,9 +51,9 @@ class EventExcelReport(models.TransientModel):
         worksheet.set_column('E:E', 20)  # Location
         worksheet.set_column('F:F', 30)  # Reg Start Date
         worksheet.set_column('G:G', 30)  # Reg End Date
-        worksheet.set_column('H:H', 10)  # Total Sessions
-        worksheet.set_column('I:I', 10)  # Total Tickets
-        worksheet.set_column('J:J', 10)  # Total Attendee
+        worksheet.set_column('H:H', 15)  # Total Sessions
+        worksheet.set_column('I:I', 15)  # Total Tickets
+        worksheet.set_column('J:J', 15)  # Total Attendee
 
         worksheet.write('A2', 'Name', header_format)
         worksheet.write('B2', 'Description', header_format)
