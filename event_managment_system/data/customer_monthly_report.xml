@@ -1,7 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <!-- File: views/email_templates.xml -->
     <data>
+        <record id="email_template_monthly_report" model="mail.template">
+            <field name="name">Monthly Report Email Template</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="subject">Monthly Report</field>
+            <field name="email_from">odoobot@example.com</field>
+            <field name="email_to">{{ object.user_id.email or '' }}</field>
+            <field name="body_html" type="html">
+                <html>
+                    <head>
+                        <!-- CSS styles -->
+                        <style>
+                            body {
+                            font-family: Arial, sans-serif;
+                            font-size: 16px;
+                            line-height: 1.6;
+                            background-color: #f4f4f4;
+                            padding: 20px;
+                            }
+                            .container {
+                            max-width: 800px;
+                            margin: 0 auto;
+                            padding: 20px;
+                            }
+                            .header {
+                            background-color: #4CAF50;
+                            color: white;
+                            padding: 20px;
+                            text-align: center;
+                            }
+                            .header h1 {
+                            margin: 0;
+                            font-size: 24px;
+                            }
+                            .content {
+                            padding: 20px;
+                            background-color: #fff;
+                            border-radius: 5px;
+                            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                            }
+                            .footer {
+                            margin-top: 20px;
+                            text-align: center;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <!-- Email content -->
+                        <div class="container">
+                            <!-- Header -->
+                            <div class="header">
+                                <h1>Monthly Report</h1>
+                            </div>
+                            <!-- Content -->
+                            <div class="content">
+                                <p>Dear <t t-out="object.user_id.name or ''"/>,
+                                </p>
+                                <p>Here is your monthly report:</p>
+                                <p>Thank you.</p>
+                            </div>
+                            <!-- Footer -->
+                            <div class="footer">
+                                <p>This is an automated email. Please do not reply.</p>
+                            </div>
+                        </div>
+                    </body>
+                </html>
+            </field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+    </data>
+
+
+    <data noupdate="0">
         <record id="sale_customer_monthly_report" model="ir.cron">
             <field name="name">Customer : Monthly Report</field>
             <field name="model_id" ref="sale.model_sale_order"/>
