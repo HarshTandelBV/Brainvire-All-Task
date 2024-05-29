@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="menu_demo_module_root" name="Demo Module" sequence="2"/>
+
+        <menuitem id="menu_demo_demo_master"
+                  name="Menu 1"
+                  parent="menu_demo_module_root"
+                  sequence="1"/>
+
+
+    </data>
+</odoo>
