@@ -13,4 +13,4 @@ class CustomerOrderLine(models.Model):
     email = fields.Char(string='Email')
     dob = fields.Date(string='Date Of Birth')
     country = fields.Many2one('res.country', string='Country')
-
+    order_id = fields.Many2one('demo.product')

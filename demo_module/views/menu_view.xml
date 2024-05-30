@@ -8,6 +8,10 @@
                   parent="menu_demo_module_root"
                   sequence="1"/>
 
+        <menuitem id="menu_demo_demo1_master"
+                  name="Menu 2"
+                  parent="menu_demo_module_root"
+                  sequence="2"/>
 
     </data>
 </odoo>

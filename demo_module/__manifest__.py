@@ -8,6 +8,8 @@
         'views/menu_view.xml',
         'views/customer_view.xml',
         'views/customer_order_line_view.xml',
+        'views/product_view.xml',
+        'views/order_status.xml'
     ],
     'demo': [],
     'installable': True,
