@@ -6,7 +6,7 @@ from odoo import fields, models, api, _
 class ResPartner(models.Model):
     _inherit = "res.partner"
 
-    sale_ids = fields.One2many('sale.order','partner_id',string='sales Details')
+    sale_ids = fields.One2many('sale.order', 'partner_id', string='sales Details')
     total_sale_amount = fields.Float(compute="_compute_total")
     dob = fields.Date(string="DOB")
 
@@ -30,6 +30,11 @@ class ResPartner(models.Model):
 
     def action_customer_sale_details(self):
         """ Opens a wizard to compose an email, with relevant mail template loaded by default """
+
+        # mail_template = self.env.ref('event_managment_system.customer_email_template')
+        # for customer in self:
+        #     mail_template.send_mail(customer.id, force_send=True)
+        #
         self.ensure_one()
         lang = self.env.context.get('lang')
         mail_template = self.env.ref('event_managment_system.customer_email_template')

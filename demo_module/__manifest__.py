@@ -9,7 +9,8 @@
         'views/customer_view.xml',
         'views/customer_order_line_view.xml',
         'views/product_view.xml',
-        'views/order_status.xml'
+        'views/order_status.xml',
+        'report/order_status_report.xml'
     ],
     'demo': [],
     'installable': True,

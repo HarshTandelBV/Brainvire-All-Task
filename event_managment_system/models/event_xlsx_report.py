@@ -3,8 +3,6 @@ from odoo import fields, models, api
 from odoo.exceptions import ValidationError
 import io
 import xlsxwriter
-from odoo.tools.misc import xlsxwriter as odoo_xlsxwriter
-from odoo import models
 
 
 class EventExcelReport(models.TransientModel):

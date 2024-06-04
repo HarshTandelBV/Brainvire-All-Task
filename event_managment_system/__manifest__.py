@@ -1,18 +1,17 @@
 # -*- coding: utf-8 -*-
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
-    'name': 'Event Managment System',
+    'name': 'Event Management System',
     'version': '1.0.0',
-    'summary': 'Event Managment System',
+    'summary': 'Event Management System',
     'sequence': -100,
     'description': """
-Gaming Cafe
+Event Managment System
 ====================
 The specific and easy-to-use customer event management system in Odoo allows you to keep track of your customer data, even when you are not an accountant. It provides an easy way to follow up on your vendors and customers.
     """,
-    'category': 'Event/Event Managment System',
+    'category': 'Event/Event Management System',
     'website': 'https://www.odoo.com/',
-    'depends': ['base', 'sale', 'stock', 'sale_management','mail'],
+    'depends': ['base', 'sale', 'stock', 'sale_management', 'mail', 'web', 'hr_expense'],
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',
@@ -37,11 +36,18 @@ The specific and easy-to-use customer event management system in Odoo allows you
         'views/sale_commission_view.xml',
         'views/sale_customer_view.xml',
         'views/event_report_view.xml',
+        'views/hr_expense.xml',
         'report/event_report.xml',
         'report/invoice_report.xml',
         'report/commission_report.xml',
-        'report/sale_customer_report.xml'
+        'report/sale_customer_report.xml',
     ],
+    'assets': {
+        'web.assets_backend': [
+            'event_managment_system/static/src/js/hr_expense_button.js',
+            'event_managment_system/static/src/views/hr_expense_button.xml',
+        ],
+    },
     'demo': [],
     'installable': True,
     'application': True,

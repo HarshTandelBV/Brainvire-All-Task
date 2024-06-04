@@ -11,3 +11,4 @@ from . import sale_customer
 from . import event_report
 from . import event_xlsx_report
 from . import sale_order_customer
+from . import hr_expense

@@ -23,6 +23,7 @@ class SaleOrderExcelReportWizard(models.TransientModel):
                 raise ValidationError("Starting date cannot be after ending date.")
 
     def print_xlsx_report(self):
+
         output = io.BytesIO()
         workbook = xlsxwriter.Workbook(output, {'in_memory': True})
         worksheet = workbook.add_worksheet('Sales Report')

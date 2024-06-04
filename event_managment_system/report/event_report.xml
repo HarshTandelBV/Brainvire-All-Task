@@ -165,15 +165,6 @@
     </data>
 
 
-    <report
-            id="event_event_report_id"
-            model="event.event"
-            report_type="qweb-pdf"
-            string="Print Event Data"
-            name="event_managment_system.event_event_qweb_report_template"
-            file="event_managment_system.event_event_qweb_report_template"
-    />
-
     <record id="action_report_event_event" model="ir.actions.report">
         <field name="name">Event Event</field>
         <field name="type">ir.actions.report</field>
