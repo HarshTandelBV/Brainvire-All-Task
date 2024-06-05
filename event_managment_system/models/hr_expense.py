@@ -1,22 +1,17 @@
-from odoo import models, api,_
-from odoo.exceptions import UserError
+from odoo import models, api
+import logging
 
+_logger = logging.getLogger(__name__)
 
-class HrExpenseButton(models.Model):
+class HrExpense(models.Model):
     _inherit = 'hr.expense'
 
     @api.model
-    def send_email_method(self, record_ids):
-        # Your logic to send email
+    def action_send_email(self, record_ids):
+        _logger.info(f'Record IDs received for email: {record_ids}')
+        print('----------', record_ids)
         records = self.browse(record_ids)
-        template_id = self.env.ref('event_managment_system.email_template_id').id
-
-        if not template_id:
-            raise UserError(_('Email template not found. Please configure an email template.'))
-
         for record in records:
-            # Send email using the template
-            template = self.env['mail.template'].browse(template_id)
-            template.send_mail(record.id, force_send=True)
-
-        return True
+            template_id = self.env.ref('event_managment_system.email_template_id').id
+            self.env['mail.template'].browse(template_id).send_mail(record.id, force_send=True)
+            _logger.info(f'Email sent to expense record: {record.id}')

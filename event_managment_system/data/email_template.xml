@@ -184,54 +184,67 @@
             <field name="body_html" type="html">
                 <html>
                     <head>
-                        <style>
-                            body {
-                            background-color: #f4f4f4;
-                            padding: 20px;
-                            font-family: Arial, sans-serif;
-                            }
-                            .container {
-                            max-width: 600px;
-                            margin: 0 auto;
-                            background-color: #fff;
-                            border-radius: 8px;
-                            padding: 20px;
-                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                            }
-                            .header {
-                            background-color: #735DA5;
-                            color: white;
-                            padding: 10px;
-                            border-radius: 8px 8px 0 0;
-                            }
-                            .content {
-                            padding: 20px;
-                            }
-                            .footer {
-                            background-color: #735DA5;
-                            color: white;
-                            padding: 10px;
-                            border-radius: 0 0 8px 8px;
-                            text-align: center;
-                            }
-                        </style>
                     </head>
-                    <body>
-                        <div class='container'>
-                            <div class='header'>
+                    <body style="background-color: #f4f4f4; padding: 20px; font-family: Arial, sans-serif;">
+                        <div class='container'
+                             style="max-width: 600px; margin: 0 auto; background-color: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                            <div class='header'
+                                 style="background-color: #735DA5; color: white; padding: 10px; border-radius: 8px 8px 0 0;">
                                 <h2>Notification!</h2>
                             </div>
-                            <div class='content'>
+                            <div class='content' style="padding: 20px;">
                                 <p>Dear<t t-out="object.employee_id.name"/>,
                                 </p>
-                                <p>This is a notification regarding your expense report with the reference:
-                                </p>
+                                <p>This is a notification regarding your expense report with the reference:</p>
+                                <table class="table" style="width: 100%; border-collapse: collapse;">
+                                    <tr>
+                                        <th style="padding: 8px; border-bottom: 1px solid #ddd; background-color: #f2f2f2; text-align: left;">
+                                            Expense Date
+                                        </th>
+                                        <th style="padding: 8px; border-bottom: 1px solid #ddd; background-color: #f2f2f2; text-align: left;">
+                                            Description
+                                        </th>
+                                        <th style="padding: 8px; border-bottom: 1px solid #ddd; background-color: #f2f2f2; text-align: left;">
+                                            Payment Mode
+                                        </th>
+                                        <th style="padding: 8px; border-bottom: 1px solid #ddd; background-color: #f2f2f2; text-align: left;">
+                                            Company
+                                        </th>
+                                        <th style="padding: 8px; border-bottom: 1px solid #ddd; background-color: #f2f2f2; text-align: left;">
+                                            Total Amount
+                                        </th>
+                                        <th style="padding: 8px; border-bottom: 1px solid #ddd; background-color: #f2f2f2; text-align: left;">
+                                            Status
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: left;">
+                                            <t t-out="object.date"/>
+                                        </td>
+                                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: left;">
+                                            <t t-out="object.name"/>
+                                        </td>
+                                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: left;">
+                                            <t t-out="object.payment_mode"/>
+                                        </td>
+                                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: left;">
+                                            <t t-out="object.company_id.name"/>
+                                        </td>
+                                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: left;">
+                                            <t t-out="object.total_amount"/>
+                                        </td>
+                                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: left;">
+                                            <t t-out="object.state"/>
+                                        </td>
+                                    </tr>
+                                </table>
                                 <p>Please review the details and take the necessary actions.</p>
                                 <p>Thank you!</p>
                                 <p>Best regards,</p>
                                 <p>Brainvire Family</p>
                             </div>
-                            <div class='footer'>
+                            <div class='footer'
+                                 style="background-color: #735DA5; color: white; padding: 10px; border-radius: 0 0 8px 8px; text-align: center;">
                                 <p>© 2024 Brainvire. All rights reserved.</p>
                             </div>
                         </div>
@@ -241,5 +254,6 @@
             <field name="auto_delete" eval="True"/>
         </record>
     </data>
+
 
 </odoo>

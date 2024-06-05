@@ -36,7 +36,6 @@ The specific and easy-to-use customer event management system in Odoo allows you
         'views/sale_commission_view.xml',
         'views/sale_customer_view.xml',
         'views/event_report_view.xml',
-        'views/hr_expense.xml',
         'report/event_report.xml',
         'report/invoice_report.xml',
         'report/commission_report.xml',
