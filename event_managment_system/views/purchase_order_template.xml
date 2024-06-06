@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_my_purchase_order_custom" name="Custom Purchase Order" inherit_id="purchase.portal_my_purchase_order">
+        <xpath expr="//div[contains(@class, 'o_download_pdf btn-toolbar flex-sm-nowrap')]" position="after">
+            <div class="btn-group flex-grow-1 mb-1">
+                <button type="button" class="btn btn-secondary btn-block" id="contact_us"><i class="fa fa-user"/> Customer Support</button>
+            </div>
+        </xpath>
+    </template>
+</odoo>
+
+
+

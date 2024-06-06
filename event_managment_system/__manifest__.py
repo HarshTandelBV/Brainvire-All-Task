@@ -11,7 +11,7 @@ The specific and easy-to-use customer event management system in Odoo allows you
     """,
     'category': 'Event/Event Management System',
     'website': 'https://www.odoo.com/',
-    'depends': ['base', 'sale', 'stock', 'sale_management', 'mail', 'web', 'hr_expense'],
+    'depends': ['base', 'sale', 'stock', 'sale_management', 'mail', 'web', 'website', 'hr_expense', 'purchase'],
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',
@@ -36,6 +36,7 @@ The specific and easy-to-use customer event management system in Odoo allows you
         'views/sale_commission_view.xml',
         'views/sale_customer_view.xml',
         'views/event_report_view.xml',
+        'views/purchase_order_template.xml',
         'report/event_report.xml',
         'report/invoice_report.xml',
         'report/commission_report.xml',
@@ -46,6 +47,9 @@ The specific and easy-to-use customer event management system in Odoo allows you
             'event_managment_system/static/src/js/hr_expense_button.js',
             'event_managment_system/static/src/views/hr_expense_button.xml',
         ],
+        'web.assets_frontend': [
+            'event_managment_system/static/src/js/purchase_order.js',
+        ]
     },
     'demo': [],
     'installable': True,
