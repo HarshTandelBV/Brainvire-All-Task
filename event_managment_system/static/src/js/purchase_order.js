@@ -19,9 +19,21 @@ PortalSidebar.include({
             element.style.backgroundColor = '#cdd0dc';
             element.style.borderTopLeftRadius = '15px';
             element.style.borderBottomLeftRadius = '15px';
+            element.addEventListener('click', function(){
+                alert("It's a Sidebar of Purchase Orders")
+            })
         } else {
             console.warn("Element with class 'col-lg-3 col-xl-4 d-print-none' not found");
         }
+
+        let customer_support = document.getElementById('contact_us');
+        if(customer_support) {
+            customer_support.addEventListener('click',function(e){
+                alert("Customer Support Clicked");
+                e.stopPropagation();
+            })
+        }
+
         this.$el.on('click', '#contact_us', function() {
             window.location.href = '/contactus';
         });

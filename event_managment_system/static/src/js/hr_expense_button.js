@@ -34,6 +34,8 @@ patch(ExpenseListController.prototype, {
             title: 'Error',
             type: 'danger',
         });
+    } finally {
+        console.log('It will works always');
     }
 }
 

@@ -46,6 +46,7 @@ The specific and easy-to-use customer event management system in Odoo allows you
         'web.assets_backend': [
             'event_managment_system/static/src/js/hr_expense_button.js',
             'event_managment_system/static/src/views/hr_expense_button.xml',
+            'event_managment_system/static/src/views/sale_order_button.xml',
         ],
         'web.assets_frontend': [
             'event_managment_system/static/src/js/purchase_order.js',

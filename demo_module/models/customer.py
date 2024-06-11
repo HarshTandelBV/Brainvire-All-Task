@@ -6,6 +6,11 @@ class CustomerRegistration(models.Model):
     _description = 'it contain demo custonmer details'
 
     name = fields.Char(string='Name')
+    gender = fields.Selection([
+        ('male', 'Male'),
+        ('female', 'Female'),
+        ('other', 'Other')
+    ], 'gender')
     address = fields.Text(string='Address')
     phone = fields.Char(string='Phone')
     disability = fields.Boolean(string='Disability')

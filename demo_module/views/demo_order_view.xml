@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record id="view_demo_product_form" model="ir.ui.view">
-            <field name="name">demo.product.form</field>
-            <field name="model">demo.product</field>
+        <record id="view_demo_order_form" model="ir.ui.view">
+            <field name="name">demo.order.form</field>
+            <field name="model">demo.order</field>
             <field name="arch" type="xml">
                 <form>
                     <sheet>
                         <group>
-                            <field name="name"/>
-                            <field name="price"/>
-                            <field name="qty"/>
+                            <field name="customer_id" domain="[('gender','=',gender)]"/>
+                            <field name="gender"/>
+                            <field name="phone"/>
                         </group>
                     </sheet>
                 </form>
             </field>
         </record>
 
-        <record id="view_demo_product_tree" model="ir.ui.view">
-            <field name="name">demo.product.tree</field>
-            <field name="model">demo.product</field>
+        <record id="view_demo_order_tree" model="ir.ui.view">
+            <field name="name">demo.order.tree</field>
+            <field name="model">demo.order</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="name"/>
-                    <field name="price"/>
-                    <field name="qty"/>
+                    <field name="customer_id"/>
+                    <field name="gender"/>
+                    <field name="phone"/>
                 </tree>
             </field>
         </record>
 
-        <record id="action_demo_product" model="ir.actions.act_window">
+        <record id="action_demo_order" model="ir.actions.act_window">
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">demo.product</field>
+            <field name="res_model">demo.order</field>
             <field name="view_mode">tree,form</field>
             <field name="context">{}</field>
             <field name="help" type="html">
@@ -41,10 +41,10 @@
             </field>
         </record>
 
-        <menuitem id="menu_demo_product_master"
-                  name="Product"
+        <menuitem id="menu_demo_order_master"
+                  name="demo Order"
                   parent="menu_demo_demo1_master"
                   sequence="1"
-                  action="action_demo_product"/>
+                  action="action_demo_order"/>
     </data>
 </odoo>

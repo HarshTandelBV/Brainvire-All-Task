@@ -4,3 +4,4 @@ access_demo_customer_order_line,demo customer order line,model_demo_customer_ord
 access_demo_product,demo Product,model_demo_product,base.group_user,1,1,1,1
 access_demo_order_status,demo Order Status,model_demo_order_status,base.group_user,1,1,1,1
 access_demo_order_line,demo Order line,model_demo_order_line,base.group_user,1,1,1,1
+access_demo_order,demo order,model_demo_order,base.group_user,1,1,1,1

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="demo_email_template"  model="mail.template">
+            <field name="name">Demo: Email Template</field>
+            <field name="model_id" ref="model_demo_customer"/>
+            <field name="email_to">{{object.create_uid.email or ''}}</field>
+            <field name="email_from">{object.email}</field>
+            <field name="body_html" type="html">
+                <html>
+                    <head>
+                        <body style="background-color: #f4f4f4; padding: 20px; font-family: Arial, sans-serif;">
+                            <table class="table" style="width: 100%; border-collapse: collapse;">
+                                <thead>
+                                    <tr>
+                                        <th style="padding: 8px; border-bottom: 1px solid #ddd; background-color: #f2f2f2; text-align: left;">
+                                            Name
+                                        </th>
+                                        <th style="padding: 8px; border-bottom: 1px solid #ddd; background-color: #f2f2f2; text-align: left;">
+                                            Gender
+                                        </th>
+                                        <th style="padding: 8px; border-bottom: 1px solid #ddd; background-color: #f2f2f2; text-align: left;">
+                                            Address
+                                        </th>
+                                        <th style="padding: 8px; border-bottom: 1px solid #ddd; background-color: #f2f2f2; text-align: left;">
+                                            Phone
+                                        </th>
+                                        <th style="padding: 8px; border-bottom: 1px solid #ddd; background-color: #f2f2f2; text-align: left;">
+                                            Disability
+                                        </th>
+                                        <th style="padding: 8px; border-bottom: 1px solid #ddd; background-color: #f2f2f2; text-align: left;">
+                                            Email
+                                        </th>
+                                        <th style="padding: 8px; border-bottom: 1px solid #ddd; background-color: #f2f2f2; text-align: left;">
+                                            dob
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: left;">
+                                            <t t-out="object.name"/>
+                                        </td>
+                                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: left;">
+                                            <t t-out="object.gender"/>
+                                        </td>
+                                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: left;">
+                                            <t t-out="object.address"/>
+                                        </td>
+                                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: left;">
+                                            <t t-out="object.phone"/>
+                                        </td>
+                                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: left;">
+                                            <t t-out="object.disability"/>
+                                        </td>
+                                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: left;">
+                                            <t t-out="object.email"/>
+                                        </td>
+                                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: left;">
+                                            <t t-out="object.dob"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p>Please review the details and take the necessary actions.</p>
+                            <p>Thank you!</p>
+                            <p>Best regards,</p>
+                            <p>Brainvire Family</p>
+                        </body>
+                    </head>
+                </html>
+            </field>
+        </record>
+    </data>
+</odoo>

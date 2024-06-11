@@ -50,6 +50,7 @@ class OrderStatus(models.Model):
     def create(self, values):
         order = super(OrderStatus, self).create(values)
         order._update_product_qty()
+        print(order)
         return order
 
     @api.model

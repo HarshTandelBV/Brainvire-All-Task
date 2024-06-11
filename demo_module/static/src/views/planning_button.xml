@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<templates>
+    <t t-name="event_managment_system.PlanningGanttView.Buttons" t-inherit="planning.PlanningGanttView.Buttons" t-inherit-mode="extension">
+        <xpath expr="//button[@t-if='model.metaData.canCreate']" position="after">
+            <button class="d-none d-md-block btn btn-secondary" t-on-click="popup">
+                Pop UP
+            </button>
+        </xpath>
+    </t>
+</templates>
