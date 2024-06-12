@@ -27,7 +27,7 @@
             <field name="name">demo.customer.tree</field>
             <field name="model">demo.customer</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree js_class="demo_list">
                     <field name="name"/>
                     <field name="gender"/>
                     <field name="address"/>

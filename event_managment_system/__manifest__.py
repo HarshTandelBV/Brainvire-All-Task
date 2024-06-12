@@ -33,6 +33,7 @@ The specific and easy-to-use customer event management system in Odoo allows you
         'views/facilities_view.xml',
         'views/guest_view.xml',
         'views/ticket_view.xml',
+        # 'views/event_controller.xml',
         'views/sale_commission_view.xml',
         'views/sale_customer_view.xml',
         'views/event_report_view.xml',
@@ -45,8 +46,9 @@ The specific and easy-to-use customer event management system in Odoo allows you
     'assets': {
         'web.assets_backend': [
             'event_managment_system/static/src/js/hr_expense_button.js',
+            'event_managment_system/static/src/js/form_controller.js',
             'event_managment_system/static/src/views/hr_expense_button.xml',
-            'event_managment_system/static/src/views/sale_order_button.xml',
+            'event_managment_system/static/src/views/form_controller.xml',
         ],
         'web.assets_frontend': [
             'event_managment_system/static/src/js/purchase_order.js',

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<templates>
+    <t t-name="event.FormView.Buttons" t-inherit="web.FormView.Buttons" t-inherit-mode="primary">
+        <xpath expr="//div[hasclass('o_form_buttons_view')]" position="inside">
+            <button class="btn btn-secondary" type="button">
+                Get Excel Data
+            </button>
+        </xpath>
+    </t>
+
+</templates>

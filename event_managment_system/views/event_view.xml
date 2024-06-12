@@ -8,7 +8,7 @@
         <field name="name">event.event.form</field>
         <field name="model">event.event</field>
         <field name="arch" type="xml">
-            <form>
+            <form js_class="event_list">
                 <header>
                     <button name="%(event_managment_system.action_event_track)d" string="Go to Session" type="action"
                             class="oe_highlight"/>

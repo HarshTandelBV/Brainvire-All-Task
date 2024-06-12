@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="event_managment_form_inherit" model="ir.ui.view">
+            <field name="name">event.managment.form.inherit</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event_managment_system.view_event_event_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="attributes">
+                    <attribute name="js_class">event_list</attribute>
+                </xpath>
+
+            </field>
+        </record>
+</odoo>
