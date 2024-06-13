@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="practice_form_view" model="ir.ui.view">
+            <field name="name">practice.form.view</field>
+            <field name="model">practice.practice</field>
+            <field name="arch" type="xml">
+                <form string="Practice">
+                    <sheet>
+                        <group>
+                            <field name="customer_id"/>
+                            <field name="title" />
+                            <field name="dob"/>
+                            <field name="age"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="practice_tree_view" model="ir.ui.view">
+            <field name="name">practice.tree.view</field>
+            <field name="model">practice.practice</field>
+            <field name="arch" type="xml">
+                <tree string="Practice">
+                    <field name="customer_id"/>
+                    <field name="title"/>
+                    <field name="dob"/>
+                    <field name="age"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="practice_action_window" model="ir.actions.act_window">
+            <field name="name">practice.action.window</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">practice.practice</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create a new entry
+                </p>
+            </field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="practice_menu_sub" name="Practice" parent="practice_menu_master" action="practice_action_window"
+                  sequence="1"/>
+    </data>
+</odoo>

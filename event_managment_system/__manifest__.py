@@ -33,7 +33,7 @@ The specific and easy-to-use customer event management system in Odoo allows you
         'views/facilities_view.xml',
         'views/guest_view.xml',
         'views/ticket_view.xml',
-        # 'views/event_controller.xml',
+        'views/event_controller.xml',
         'views/sale_commission_view.xml',
         'views/sale_customer_view.xml',
         'views/event_report_view.xml',

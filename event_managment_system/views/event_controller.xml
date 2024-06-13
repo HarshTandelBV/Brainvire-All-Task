@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="event_managment_form_inherit" model="ir.ui.view">
-            <field name="name">event.managment.form.inherit</field>
-            <field name="model">event.event</field>
-            <field name="inherit_id" ref="event_managment_system.view_event_event_form"/>
+    <data>
+    <record id="sale_order_form_view_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form.view.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//form" position="attributes">
-                    <attribute name="js_class">event_list</attribute>
+                    <attribute name="js_class">sale_form</attribute>
                 </xpath>
-
             </field>
         </record>
+    </data>
 </odoo>
+

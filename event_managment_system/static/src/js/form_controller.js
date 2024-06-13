@@ -1,24 +1,30 @@
 /* @odoo-module */
 
 import { registry } from "@web/core/registry";
-import { formView } from '@web/views/form/form_view';
 import { useService } from "@web/core/utils/hooks";
 import { jsonrpc } from "@web/core/network/rpc_service";
-import { AccountMoveController } from "@account/components/account_move_form/account_move_form";
+import { formView } from "@web/views/form/form_view";
+import { FormController } from "@web/views/form/form_controller";
 
-export class EventManagmentFormController extends AccountMoveController {
+export class SalesFormController extends FormController {
     setup() {
         super.setup();
         this.action = useService("action");
         this.ormService = useService("orm");
-        console.log("This is demo controller");
-    }
+        console.log("This is sales form controller");
+    };
+
+    getData(){
+        alert('hello')
+    };
 
 
+};
+SalesFormController.template = "event_managment_system.FormViewBtn";
+
+export const SaleModelFormView = {
+    ...formView,
+    Controller: SalesFormController,
 }
 
-registry.category('views').add('event_list', {
-    ...formView,
-    Controller: EventManagmentFormController,
-    buttonTemplate: "event.FormView.Buttons",
-});
+registry.category("views").add("sale_form", SaleModelFormView);
