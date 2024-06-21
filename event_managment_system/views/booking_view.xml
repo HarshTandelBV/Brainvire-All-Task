@@ -33,6 +33,8 @@
         <field name="arch" type="xml">
             <form>
                 <header>
+                    <button name="get_booking_summary" string="Booking summary" type="object"/>
+                    <button name="get_registrations_for_event" string="Event summary" type="object"/>
                     <button name="payment_status_update" string="Update Payment Status" type="object"/>
                     <field name="payment_status" widget="statusbar" nolabel="1" options="{'clickable':'1'}"
                            statusbar_visible="paid,unpaid"/>

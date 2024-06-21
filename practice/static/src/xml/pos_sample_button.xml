@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="point_of_sale.PosSampleButton" owl="1">
+        <button class="control-button btn btn-light rounded-0 fw-bolder" t-on-click="() => this.onClick()">
+            <i class="fa fa-superpowers" role="img" aria-label="Sample Button" title="Sample Button"/>
+            Clear record
+        </button>
+        <button class="control-button btn btn-light rounded-0 fw-bolder" t-on-click="() => this.removeAllRecord()">
+            <i class="fa fa-superpowers" role="img" aria-label="Sample Button" title="Sample Button"/>
+            CLear all
+        </button>
+    </t>
+</templates>

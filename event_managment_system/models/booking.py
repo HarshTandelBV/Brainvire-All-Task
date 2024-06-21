@@ -1,4 +1,4 @@
-from odoo import fields, models, _
+from odoo import fields, models, _, api
 from odoo.exceptions import UserError
 
 
@@ -35,6 +35,36 @@ class EventBooking(models.Model):
                 attendee_reg.registration_status = 'confirmed'
         return super(EventBooking, self).write(vals)
 
+    def get_booking_summary(self):
+        domain = []
+        fields = ['event_id', 'total_price:sum', 'id:count']
+        groupby = ['event_id']
+
+        result = self.read_group(domain, fields, groupby)
+
+        # Print the grouped data
+        for record in result:
+            event = self.env['event.event'].browse(record['event_id'][0])
+            print(f"Event: {event.name}")
+            print(f"Total Bookings: {record['id']}")
+            print(f"Total Price: {record['total_price']}")
+            print("-" * 40)
+
+        return result
+
+    def get_registrations_for_event(self):
+        for record in self:
+            event_id = record.event_id.id
+            domain = [('event_id', '=', event_id)]
+            fields = ['attendee_id', 'total_price']
+            registrations = self.search_read(domain, fields)
+
+            # Print the retrieved data
+            for reg in registrations:
+                print(reg['attendee_id'])
+                print(reg['total_price'])
+                print('-'*40)
+        return registrations
     def action_done(self):
         for rec in self:
             rec.payment_status = 'paid'

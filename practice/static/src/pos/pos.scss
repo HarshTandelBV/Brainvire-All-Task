@@ -1,0 +1,37 @@
+.pos-topheader{
+    height:60px;
+    background: #ff3a59 !important;
+    }
+
+.order-summary{
+    background: #ffb4bc !important;
+    }
+
+.orderline {
+    background: #ffb4bc !important;
+}
+
+.pay-order-button {
+    background: #ff3a59 !important;
+}
+
+.product{
+    border-color:#ff3a59 !important;
+
+    }
+
+.popup-confirm .footer .button{
+    background: #ff3a59 !important;
+    color: white !important;
+
+    }
+
+.pay-order-button, .validation {
+    background: #ff3a59 !important;
+    color: $white !important;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
