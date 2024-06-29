@@ -8,6 +8,7 @@
             <xpath expr="//field[@name='session_id']"
                    position="after">
                 <field name="custom_note"/>
+                <field name="discount_applied"/>
             </xpath>
         </field>
     </record>
