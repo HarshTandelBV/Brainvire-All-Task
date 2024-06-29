@@ -10,11 +10,14 @@
     'data': [
         'security/ir.model.access.csv',
         'views/menu.xml',
+        'views/pos_note.xml',
         'views/practice_view.xml',
     ],
     'assets': {
         'point_of_sale._assets_pos': [
             'practice/static/src/js/pos_sample_button.js',
+            'practice/static/src/js/models.js',
+            'practice/static/src/js/custom_note.js',
             'practice/static/src/xml/pos_sample_button.xml',
             'practice/static/src/pos/chrome.xml',
             'practice/static/src/pos/pos.scss'

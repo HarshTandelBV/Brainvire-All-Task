@@ -10,4 +10,10 @@
             CLear all
         </button>
     </t>
+    <t t-name="point_of_sale.AddNotesButton">
+        <button class="control-button o_sale_order_button btn btn-light rounded-0 fw-bolder" t-on-click="onAddItemNote">
+            <i class="fa fa-solid fa-clipboard me-1" role="img" aria-label="Add Note" title="Add Note"/>
+            Add item notes
+        </button>
+    </t>
 </templates>
