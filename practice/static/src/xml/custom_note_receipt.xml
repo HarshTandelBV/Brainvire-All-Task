@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<templates>
+    <t t-name="practice.custom_note" t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('pos-receipt')]/OrderWidget" position="after">
+            <div class="custom-note d-inline-block flex-grow-1 fw-bolder pe-1 text-truncate">
+                    Note: <span class="text-wrap " style="font-weight: normal;" t-esc="props.data.custom_note"/>
+                </div>
+        </xpath>
+    </t>
+</templates>

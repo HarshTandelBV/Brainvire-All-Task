@@ -27,6 +27,13 @@ patch(Order.prototype, {
         this.custom_note = json.custom_note;
     },
 
+    //@override
+    export_for_printing() {
+        const result = super.export_for_printing(...arguments);
+        result.custom_note = this.custom_note;
+        return result;
+    },
+
     getCustomNote() {
         return this.custom_note;
     },

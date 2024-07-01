@@ -25,6 +25,7 @@
             'practice/static/src/xml/pos_sample_button.xml',
             'practice/static/src/pos/chrome.xml',
             'practice/static/src/xml/pos_order_screen.xml',
+            'practice/static/src/xml/custom_note_receipt.xml',
             'practice/static/src/pos/pos.scss'
         ],
     },
