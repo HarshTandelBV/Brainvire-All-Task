@@ -22,4 +22,10 @@
             Overall Discount
         </button>
     </t>
+    <t t-name="point_of_sale.SetOrderButton">
+        <button class="control-button btn btn-light rounded-0 fw-bolder" t-on-click="() => this.click()">
+            <i class="fa fa-superpowers" role="img" aria-label="Orders" title="Orders"/>
+            Orders
+        </button>
+    </t>
 </templates>

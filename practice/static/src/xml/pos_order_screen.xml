@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="point_of_sale.OrderListScreen">
+        <div class="order-list-screen screen h-100 bg-100">
+            <div class="screen-full-width d-flex w-100 h-100">
+                <div class="rightpane pane-border d-flex flex-column flex-grow-1 w-100 h-100 h-lg-100 bg-300 overflow-y-auto">
+                    <div class="controls d-flex align-items-center justify-content-between mt-1 mt-lg-0 p-2 bg-400">
+                        <button class="discard btn btn-lg btn-light" t-on-click="() => this.pos.showScreen('ProductScreen')">
+                            <span class="search-icon">
+                                <i class="fa fa-angle-double-left"/>
+                            </span>
+                            Back
+                        </button>
+                        <button class="highlight btn btn-lg btn-primary"
+                                t-on-click="() => this.onCreateNewOrder()">
+                            New Order
+                        </button>
+                        <!-- Add any other buttons or controls here -->
+                    </div>
+                    <div class="orders overflow-y-auto flex-grow-1">
+                        <div class="header-row d-flex text-bg-700 fw-bolder">
+                            <div class="col wide p-2">Date</div>
+                            <div class="col wide p-2">Receipt Number</div>
+                            <div class="col wide p-2">Order Number</div>
+                            <div class="col wide p-2">Customer</div>
+                            <div class="col p-2">Cashier</div>
+                            <div class="col end p-2">Total</div>
+                            <div class="col narrow p-2">Status</div>
+                        </div>
+                        <t t-foreach="state.orders" t-as="order" t-key="order.cid">
+                            <div class="order-row">
+                                <div class="col wide p-2"><t t-esc="order.date_order"/></div>
+                                <div class="col wide p-2"><t t-esc="order.pos_reference"/></div>
+                                <div class="col wide p-2"><t t-esc="order.name"/></div>
+                                <div class="col p-2"><t t-esc="order.partner_id[1] || 'N/A'"/></div>
+                                <div class="col p-2"><t t-esc="order.employee_id[1] || 'N/A'"/></div>
+                                <div class="col end p-2"><t t-esc="pos.env.utils.formatCurrency(order.amount_total, 'Accounting')"/></div>
+                                <div class="col narrow p-2"><t t-esc="order.state"/></div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

@@ -20,8 +20,11 @@
             'practice/static/src/js/models.js',
             'practice/static/src/js/custom_note.js',
             'practice/static/src/js/custom_discount.js',
+            'practice/static/src/js/set_order_button.js',
+            'practice/static/src/js/pos_order_screen.js',
             'practice/static/src/xml/pos_sample_button.xml',
             'practice/static/src/pos/chrome.xml',
+            'practice/static/src/xml/pos_order_screen.xml',
             'practice/static/src/pos/pos.scss'
         ],
     },
