@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+    <t t-name="practice.sundry_customer" t-inherit="point_of_sale.PartnerListScreen" t-inherit-mode="extension" >
+        <xpath expr="//div[hasclass('partnerlist-screen')]/div[hasclass('top-content')]/div[hasclass('back')]"
+               position="after">
+            <button class="button new-customer highlight btn btn-lg btn-primary" role="img"
+                    style="width: 300px;"
+                    aria-label="Add a customer"
+                    title="Set Sundry Customer"
+                    t-on-click="setSundryCustomer">
+                <i class="fa fa-solid fa-clipboard me-1" role="img" aria-label="Set Sundry Customer" title="Set Sundry Customer"/>
+                Set Sundry Customer
+            </button>
+        </xpath>
+    </t>
+</templates>
