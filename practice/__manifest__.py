@@ -13,6 +13,7 @@
         'views/pos_note.xml',
         'views/practice_view.xml',
         'views/res_config_settings_view.xml',
+        'views/res_location.xml',
     ],
     'assets': {
         'point_of_sale._assets_pos': [
@@ -23,10 +24,14 @@
             'practice/static/src/js/set_order_button.js',
             'practice/static/src/js/pos_order_screen.js',
             'practice/static/src/js/set_sundry_customer_button.js',
+            'practice/static/src/js/location_button.js',
+            'practice/static/src/js/pos_location_screen.js',
             'practice/static/src/xml/pos_sample_button.xml',
             'practice/static/src/pos/chrome.xml',
             'practice/static/src/xml/pos_order_screen.xml',
+            'practice/static/src/xml/pos_location_screen.xml',
             'practice/static/src/xml/custom_note_receipt.xml',
+            'practice/static/src/xml/location_receipt.xml',
             'practice/static/src/xml/sundry_customer_button.xml',
             'practice/static/src/pos/pos.scss'
         ],

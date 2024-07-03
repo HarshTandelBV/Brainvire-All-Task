@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="point_of_sale.LocationListScreen">
+        <div class="location-list-screen screen h-100 bg-100">
+            <div class="screen-full-width d-flex w-100 h-100">
+                <div class="rightpane pane-border d-flex flex-column flex-grow-1 w-100 h-100 h-lg-100 bg-300 overflow-y-auto">
+                    <!-- Header and Back Button -->
+                    <div class="controls d-flex align-items-center justify-content-between mt-1 mt-lg-0 p-2 bg-400">
+                        <button class="discard btn btn-lg btn-light" t-on-click="() => this.pos.showScreen('ProductScreen')">
+                            <span class="search-icon">
+                                <i class="fa fa-angle-double-left"/>
+                            </span>
+                            Back
+                        </button>
+                    </div>
+
+                    <!-- Location List -->
+                    <div class="locations overflow-y-auto flex-grow-1">
+                        <!-- Header Row -->
+                        <div class="header-row d-flex text-bg-700 fw-bolder">
+                            <div class="col wide p-2">Location</div>
+                        </div>
+
+                        <!-- Iterating through locations -->
+                        <t t-foreach="state.locations" t-as="location" t-key="location.id">
+                            <div class="location-row d-flex" t-on-click="() => this.selectLocation(location.id)">
+                                <div class="col wide p-2"><t t-esc="location.name"/></div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

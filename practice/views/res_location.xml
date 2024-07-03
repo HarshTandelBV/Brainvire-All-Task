@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_res_location_form" model="ir.ui.view">
+            <field name="name">res.location.form</field>
+            <field name="model">res.location</field>
+            <field name="arch" type="xml">
+                <form string="Location Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <!-- Add other fields here as needed -->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_res_location_tree" model="ir.ui.view">
+            <field name="name">res.location.tree</field>
+            <field name="model">res.location</field>
+            <field name="arch" type="xml">
+                <tree string="Locations">
+                    <field name="name"/>
+                    <!-- Add other fields to display in the list view -->
+                </tree>
+            </field>
+        </record>
+
+        <record id="practice_action_res_location" model="ir.actions.act_window">
+            <field name="name">practice.action.res.Location</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.location</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create a new entry
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="practice_menu_res_location" name="Locations" parent="point_of_sale.menu_point_of_sale" action="practice_action_res_location"
+                  sequence="101"/>
+
+
+    </data>
+</odoo>

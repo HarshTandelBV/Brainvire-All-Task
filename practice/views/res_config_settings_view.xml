@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="res_config_settings_view_form" model="ir.ui.view">
-        <field name="name">res.config.settings.view.form.inherit.pos_sale.discount</field>
+    <record id="res_config_settings_custom_button_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.custom.button.view.form.inherit.pos_sale.discount</field>
         <field name="model">res.config.settings</field>
         <field name="inherit_id" ref="point_of_sale.res_config_settings_view_form"/>
         <field name="arch" type="xml">
@@ -12,6 +12,19 @@
                     </setting>
                 </block>
             </block>
+        </field>
+    </record>
+
+    <record id="pos_config_location_view_form" model="ir.ui.view">
+        <field name="name">pos.config.location.view.form.inherit</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//setting[@id='other_devices']" position="after">
+                    <setting string="Locations" help="Set your location">
+                        <field name="location_ids" widget="many2many_tags" />
+                    </setting>
+            </xpath>
         </field>
     </record>
 </odoo>
