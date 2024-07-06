@@ -10,8 +10,12 @@
                 <attribute name="widget">statusbar</attribute>
                 <attribute name="statusbar_visible">draft,sent,to_approve,sale</attribute>
             </field>
+            <xpath expr="//button[@name='action_cancel']" position="attributes">
+                <attribute name="invisible">state not in ['draft', 'sent', 'sale', 'to_approve'] or not id or locked</attribute>
+            </xpath>
             <xpath expr="//header/button[@name='action_preview_sale_order']" position="after">
-                <button name="action_approve" string="Approve" type="object" groups="sales_approval_task.group_sales_manager_access" class="btn-secondary"/>
+                <button name="action_approve" string="Approve" type="object" groups="sales_approval_task.group_sales_manager_access"
+                        invisible="state == 'draft' or state == 'sent' or state == 'sale' or state == 'cancel' " class="btn-secondary"/>
             </xpath>
         </field>
     </record>
