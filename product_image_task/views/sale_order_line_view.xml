@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="image_view_order_form_inherit" model="ir.ui.view">
+        <field name="name">image.sale.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+           <xpath expr="//form/sheet/notebook/page[@name='order_lines']/field[@name='order_line']/tree/field[@name='tax_id']" position="after">
+                <field name="product_image" string="Image"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="image_stock_picking_form_view" model="ir.ui.view">
+        <field name="name">image.stock.picking.form.view</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='operations']/field[@name='move_ids_without_package']/tree/field[@name='product_uom_qty']"
+                   position="after">
+                <field name="product_image"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="image_account_move_form_view" model="ir.ui.view">
+        <field name="name">image.account.move.form.view</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='invoice_tab']/field[@name='invoice_line_ids']/tree/field[@name='price_unit']"
+                   position="after">
+                <field name="product_image"/>
+            </xpath>
+        </field>
+    </record>
+
+    <template id="new_custom_report_saleorder_document_inherit_sale_stock_for_image"
+                  inherit_id="sale.report_saleorder_document">
+            <xpath expr="//div/table/thead/tr/th[@name='th_description']" position="after">
+                <th name="th_product_image" class="text-end">Product Image</th>
+            </xpath>
+            <xpath expr="//div/table/tbody/t/tr/t[@t-if='not line.display_type']/td[@name='td_name']" position="after">
+                <td name="td_product_image" class="text-end">
+                    <t t-if="line.product_image">
+                        <img t-att-src="image_data_uri(line.product_image)"
+                             height="50" width="50"/>
+                    </t>
+                </td>
+            </xpath>
+        </template>
+
+</odoo>
