@@ -6,7 +6,7 @@ class PosOrder(models.Model):
 
     custom_note = fields.Char(string='Custom Note',readonly=True)
     discount_applied = fields.Boolean(string='Discount Applied', readonly=True)
-    location = fields.Char(string='Location')
+    location = fields.Char(string='Location' , readonly=True)
     @api.model
     def _order_fields(self, ui_order):
         order_fields = super(PosOrder, self)._order_fields(ui_order)

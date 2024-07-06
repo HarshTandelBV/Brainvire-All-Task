@@ -35,8 +35,11 @@ export class SetLocationButton extends Component {
 
     async click() {
         const config_id = this.pos.config.id;
-
-        console.log(config_id);
+//        console.log(config_id);
+        const current_order = this.pos.get_order();
+        if(!current_order.get_partner()){
+            return
+        }
         this.pos.showScreen("LocationListScreen");
     }
 }

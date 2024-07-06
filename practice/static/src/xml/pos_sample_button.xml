@@ -30,8 +30,8 @@
     </t>
     <t t-name="point_of_sale.SetLocationButton">
         <button class="control-button btn btn-light rounded-0 fw-bolder" t-on-click="() => this.click()">
-            <i class="fa fa-superpowers" role="img" aria-label="Location" title="Location"/>
-            <t t-esc="state.selectedLocationName"/>
+            <i class="fa fa-map-marker " role="img" aria-label="Location" title="Location" style="margin-right: 8px;"/>
+            <t t-esc=" state.selectedLocationName"/>
         </button>
     </t>
 </templates>

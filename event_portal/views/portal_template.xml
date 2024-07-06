@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_my_home_event" inherit_id="portal.portal_my_home" priority="90">
+        <xpath expr="//div[hasclass('o_portal_category')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="icon" t-value="'/event_portal/static/src/img/event-icon.svg'"/>
+                <t t-set="title">Events List</t>
+                <t t-set="url" t-value="'/my/events'"/>
+                <t t-set="text">Follow, view your events</t>
+                <t t-set="config_card" t-value="True"/>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>

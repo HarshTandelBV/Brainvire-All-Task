@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_manager_category" model="ir.module.category">
+        <field name="name">Sales Manager</field>
+    </record>
+
+    <record model="ir.module.category" id="sales_approval_task.access_sale_manager_category">
+        <field name="name">Sales Manager</field>
+        <field name="parent_id" ref="sales_approval_task.sale_manager_category"/>
+        <field name="sequence">50</field>
+    </record>
+
+    <record id="group_sales_manager_access" model="res.groups">
+        <field name="name">Sales Manager</field>
+        <field name="category_id" ref="sales_approval_task.access_sale_manager_category"/>
+    </record>
+</odoo>

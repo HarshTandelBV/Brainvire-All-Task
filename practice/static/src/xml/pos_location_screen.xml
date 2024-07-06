@@ -24,7 +24,11 @@
 
                         <!-- Iterating through locations -->
                         <t t-foreach="state.locations" t-as="location" t-key="location.id">
-                            <div class="location-row d-flex" t-on-click="() => this.selectLocation(location.id)">
+                            <div class="location-row d-flex"
+                                t-attf-style="background-color: white;"
+                                t-attf-onmouseover="this.style.backgroundColor='#f0f0f0';"
+                                t-attf-onmouseout="this.style.backgroundColor='white';"
+                                t-on-click="() => this.selectLocation(location.id)">
                                 <div class="col wide p-2"><t t-esc="location.name"/></div>
                             </div>
                         </t>
