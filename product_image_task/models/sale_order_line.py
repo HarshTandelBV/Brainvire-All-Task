@@ -21,7 +21,6 @@ class SaleOrderLine(models.Model):
         return res
 
 
-
 class StockRule(models.Model):
     _inherit = 'stock.rule'
 
