@@ -1,0 +1,9 @@
+<odoo>
+    <record id="payment_cybersource.payment_provider_cybersource" model="payment.provider">
+        <field name="name">cybersource</field>
+        <field name="code">cybersource</field>
+        <field name="image_128"
+               type="base64"
+               file="payment_cybersource/static/description/icon.png"/>
+    </record>
+</odoo>

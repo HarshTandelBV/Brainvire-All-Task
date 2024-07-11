@@ -59,6 +59,7 @@ class AttendeeRegistration(models.Model):
 
     @api.model
     def create(self, vals):
+
         if vals.get('seq_num', _('New')) == _('New'):
             vals['seq_num'] = self.env['ir.sequence'].next_by_code('attendee.seq.registration') or _('New')
         rtn = super(AttendeeRegistration, self).create(vals)

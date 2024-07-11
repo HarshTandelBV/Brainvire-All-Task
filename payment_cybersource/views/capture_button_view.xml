@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="payment_cybersource_sale_order_form_view" model="ir.ui.view">
+        <field name="name">payment.cybersource.sale.order.form.view</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/header/button[@name='action_cancel']"
+                   position="after">
+                <button name="capture_in_cybersource" type="object" string="Capture In Cybersource"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
