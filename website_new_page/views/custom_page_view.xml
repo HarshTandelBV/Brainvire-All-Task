@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="new_page" name="new_page">
+        <t t-call="website.layout">
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h1 class="display-4">Hello ATOM</h1>
+                        <p class="lead">Welcome to Brainvire page. We're glad to have you here!</p>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-md-6">
+                        <h2>About Us</h2>
+                        <p>Odoo is a suite of open source business apps that cover all your company needs: CRM,
+                            eCommerce, accounting, inventory, point of sale, project management, etc.
+                        </p>
+                        <p>Our mission is to drive progress through cutting-edge solutions and unparalleled service.</p>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Year</th>
+                                    <th>Milestone</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2020</td>
+                                    <td>Company Founded</td>
+                                </tr>
+                                <tr>
+                                    <td>2021</td>
+                                    <td>Launched First Product</td>
+                                </tr>
+                                <tr>
+                                    <td>2022</td>
+                                    <td>Expanded to International Markets</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="/website_new_page/static/src/img/odoo_sidebar.jpg" class="img-fluid"
+                             alt="About Us Image"/>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <h2>Contact Us</h2>
+                        <form t-att-action="'/new_page/submit'" method="post" class="p-4 bg-light border rounded">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" name="name" required="required"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required="required"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea class="form-control" id="message" name="message" rows="3"
+                                          required="required"></textarea>
+                            </div>
+                            <br/>
+                            <div class="d-flex justify-content-between oe_custom_button">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="button" class="btn btn-secondary btn-go-to-shop">Go to Shop</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <footer class="mt-5 py-3 bg-dark text-white">
+                <div class="container text-center">
+                    <p>&#169; 2024 Your Company. All rights reserved.</p>
+                </div>
+            </footer>
+        </t>
+    </template>
+</odoo>
