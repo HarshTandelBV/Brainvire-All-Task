@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_searchbar_inherit" inherit_id="portal.portal_searchbar">
+        <xpath expr="//button[@id='portal_searchbar_sortby']" position="after">
+            <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#search_popup"
+               id="search_link">
+                <i class="fa fa-fw fa-arrow-circle-right"/>
+                Search
+            </a>
+            <div class="modal fade" id="search_popup" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Search Order</h3>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="search_order">
+                                <div class="form-group">
+                                    <label for="searchInput">Search Order</label>
+                                    <input type="text" class="form-control" id="searchInput"
+                                           placeholder="Enter Order Number"/>
+                                </div>
+                                <br/>
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </form>
+                            <div id="order_details"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+
+</odoo>

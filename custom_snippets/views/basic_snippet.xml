@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Services Snippet -->
+    <template id="services_snippet" name="Services Snippet">
+        <section class="services container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2>Our Services</h2>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3>Service 1</h3>
+                            <p>Description of service 1.</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>Service 2</h3>
+                            <p>Description of service 2.</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>Service 3</h3>
+                            <p>Description of service 3.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- Team Members Snippet -->
+    <template id="team_members_snippet" name="Team Members Snippet">
+        <section class="team-members container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2>Meet Our Team</h2>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="/path/to/image1.jpg" alt="Team Member 1" class="img-fluid"/>
+                            <h4>Team Member 1</h4>
+                            <p>Position</p>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="/path/to/image2.jpg" alt="Team Member 2" class="img-fluid"/>
+                            <h4>Team Member 2</h4>
+                            <p>Position</p>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="/path/to/image3.jpg" alt="Team Member 3" class="img-fluid"/>
+                            <h4>Team Member 3</h4>
+                            <p>Position</p>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="/path/to/image4.jpg" alt="Team Member 4" class="img-fluid"/>
+                            <h4>Team Member 4</h4>
+                            <p>Position</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- Contact Form Snippet -->
+    <template id="contact_form_snippet" name="Contact Form Snippet">
+        <section class="contact-form container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2>Contact Us</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Your Name"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Your Email"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" id="message" rows="4" placeholder="Your Message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- Inheriting website.snippets and adding custom snippets -->
+    <template id="external_snippets" inherit_id="website.snippets" priority="8">
+        <xpath expr="//div[@id='snippet_feature']//t[@t-snippet][last()]" position="after">
+            <t t-snippet="custom_snippets.services_snippet"/>
+            <t t-snippet="custom_snippets.team_members_snippet"/>
+            <t t-snippet="custom_snippets.contact_form_snippet"/>
+        </xpath>
+    </template>
+</odoo>
