@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_demo_create_template" name="Portal Demo Create">
+        <t t-call="website.layout">
+            <div class="container mt32 mb32">
+                <h1>Create New Demo</h1>
+                <form method="POST" action="/my/demo/create">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" class="form-control" required="1"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea name="description" class="form-control"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </form>
+            </div>
+        </t>
+    </template>
+</odoo>
