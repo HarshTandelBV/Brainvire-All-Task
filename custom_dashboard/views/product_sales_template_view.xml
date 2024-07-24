@@ -1,0 +1,110 @@
+<odoo>
+    <template id="product_sales_page">
+        <t t-call="website.layout">
+            <div class="container mt16 mb16">
+                <div class="row">
+                    <!-- Iterate through products and display them in a grid with 5 products per row -->
+                    <t t-foreach="products" t-as="product" t-index="index">
+                        <!-- Use col-md-2 for 5 products per row on medium screens and up -->
+                        <div class="col-md-2 col-sm-4 mb16" t-attf-class="product-item">
+                            <div class="product-card">
+                                <img t-att-src="product['image_url']" class="img-fluid" alt="Product Image"/>
+                                <h3>
+                                    <t t-esc="product['name']"/>
+                                </h3>
+                                <p>
+                                    <strong>Sold Quantity:</strong>
+                                    <t t-esc="product['sold_quantity']"/>
+                                </p>
+                                <p>
+                                    <strong>Revenue:</strong>
+                                    <t t-esc="product['revenue']"/>
+                                </p>
+                                <button type="button" class="btn btn-primary"
+                                        t-att-data-bs-toggle="'modal'"
+                                        t-att-data-bs-target="'#productModal_' + str(product['id'])">
+                                    View Details
+                                </button>
+
+                                <!-- Popup Modal -->
+                                <div class="modal fade" t-att-id="'productModal_' + str(product['id'])" tabindex="-1"
+                                     role="dialog" aria-labelledby="'productModalLabel_' + str(product['id'])"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title"
+                                                    t-att-id="'productModalLabel_' + str(product['id'])">
+                                                    Sale Details for
+                                                    <t t-esc="product['name']"/>
+                                                </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close">
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <!-- Total Sold Quantity at the Top -->
+                                                <div class="mb-3">
+                                                    <h6><strong>Total Sold Quantity:</strong></h6>
+                                                    <p><t t-esc="product['sold_quantity']"/></p>
+                                                </div>
+                                                <!-- Sales Details Table -->
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Order</th>
+                                                            <th>Quantity</th>
+                                                            <th>Price</th>
+                                                            <th>Tax</th>
+                                                            <th>Total</th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <t t-foreach="product['sales']" t-as="sale">
+                                                            <tr>
+                                                                <td>
+                                                                    <t t-esc="sale['order']"/>
+                                                                </td>
+                                                                <td>
+                                                                    <t t-esc="sale['quantity']"/>
+                                                                </td>
+                                                                <td>
+                                                                    <t t-esc="sale['price']"/>
+                                                                </td>
+                                                                <td>
+                                                                    <t t-esc="sale['tax']"/>
+                                                                </td>
+                                                                <td>
+                                                                    <t t-esc="sale['subtotal']"/>
+                                                                </td>
+
+                                                            </tr>
+                                                        </t>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End of product item -->
+                    </t>
+                </div>
+
+                <!-- Custom Pagination Controls -->
+                <div class="products_pager d-flex justify-content-center mt-3">
+                    <t t-call="website.pager">
+                        <t t-set="_classes">mt-2 ml-md-2</t>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
