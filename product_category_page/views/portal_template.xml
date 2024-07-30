@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_my_home_event" inherit_id="portal.portal_my_home" priority="90">
+        <div id="portal_client_category" position="inside">
+        <t t-call="portal.portal_docs_entry">
+                <t t-set="icon" t-value="'/product_category_page/static/src/img/category_icon.svg'"/>
+                <t t-set="title">Product Category</t>
+                <t t-set="url" t-value="'/category'"/>
+                <t t-set="text">Follow, view your Category Data</t>
+                <t t-set="config_card" t-value="True"/>
+            </t>
+        </div>
+    </template>
+
+</odoo>
